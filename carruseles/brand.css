@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
 :root {
   --ink: #171916;
   --paper: #f3f2eb;
@@ -15,7 +16,6 @@ body {
   color: var(--paper);
   overflow: hidden;
 }
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Georgia:italic&display=swap');
 .slide {
   width: 1080px;
   height: 1080px;

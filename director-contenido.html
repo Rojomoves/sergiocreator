@@ -344,27 +344,35 @@
       background-color: var(--accent-hover);
     }
   </style>
+  <link rel="stylesheet" href="assets/resources.css">
+  <script src="assets/resources.js" defer></script>
 </head>
 <body>
 
-  <div class="container">
-    <nav class="top-nav">
-      <a href="index.html" class="back-link">← Volver al portfolio</a>
+  <a class="resource-skip" href="#contenido">Saltar al contenido</a>
+  <main class="container" id="contenido">
+    <nav class="top-nav" aria-label="Navegación principal">
+      <a class="resource-wordmark" href="index.html" aria-label="Sergio, inicio">sergio<span aria-hidden="true">✳</span></a>
+      <div class="resource-nav-links"><a href="index.html#sistemas" class="back-link">← Todos los sistemas</a><a href="#acompanamiento" class="button-lime">Hablemos ↗</a></div>
     </nav>
 
     <!-- HEADER -->
     <header class="resource-header">
-      <span class="badge-system">El Sistema</span>
-      <h1>Seis pasos. Diez minutos.</h1>
+      <span class="badge-system">03 / IA + VOZ · Recurso gratuito</span>
+      <h1>Tu Director de Contenido</h1>
+      <p class="header-desc">Tu voz, tu cliente y tu oferta como punto de partida. Un sistema para analizar contenido con criterio y convertir lo que aprendes en guiones propios.</p>
     </header>
+    <nav class="resource-jumps" aria-label="Explorar este recurso"><a href="#guia">01 · Cómo funciona</a><a href="#recurso">02 · Copiar los prompts</a><a href="#acompanamiento">03 · Adaptarlo a mi negocio</a></nav>
+    <div class="resource-flow" aria-label="De tus referencias a tu guion"><div><small>ENTRADA</small><strong>Voz + cliente + oferta</strong><p>Tres documentos que dan contexto a cada propuesta.</p></div><div><small>PROCESO</small><strong>Entender por qué funciona</strong><p>Analiza la promesa, la estructura y la retención de tus referencias.</p></div><div><small>SALIDA</small><strong>Un guion que suena a ti</strong><p>Aplica lo aprendido a tu tema, con tu criterio y tus palabras.</p></div></div>
 
     <!-- SECCIÓN 01: 6 PASOS -->
-    <section class="section-block">
+    <section class="section-block" id="guia">
+      <h2 class="section-title">Seis pasos para ponerlo en marcha.</h2>
       <div class="cards-grid">
         <div class="card">
           <span class="card-number">1</span>
           <h3>Crea un proyecto, un chat</h3>
-          <p>En Claude, botón de Proyectos. Llámalos "Director de Contenido". Todo lo que metas ahí lo recordará siempre.</p>
+          <p>En Claude, crea un proyecto llamado "Director de Contenido". Añade tus documentos como contexto de trabajo y mantenlos actualizados.</p>
         </div>
         <div class="card">
           <span class="card-number">2</span>
@@ -378,8 +386,8 @@
         </div>
         <div class="card">
           <span class="card-number">4</span>
-          <h3>Roba con cabeza</h3>
-          <p>Coge un reel de tu nicho que haya reventado, transcríbelo y pégaselo.</p>
+          <h3>Analiza tus referencias</h3>
+          <p>Elige un reel de tu nicho que haya funcionado especialmente bien y analiza su transcripción.</p>
         </div>
         <div class="card">
           <span class="card-number">5</span>
@@ -428,15 +436,15 @@
       <div class="section-tag">Prompt 1 · Las instrucciones del proyecto</div>
       <p class="section-subtitle" style="margin-bottom: 16px; color: var(--text-muted);">Esto va en el campo <strong>Instrucciones del proyecto</strong>. Se pega una vez y no se vuelve a tocar.</p>
 
-      <div class="resource-container">
+      <div class="resource-container" id="recurso">
         <div class="resource-top-bar">
           <span class="resource-label">instrucciones del proyecto</span>
-          <button class="copy-button" id="copyBtn1" onclick="copyPrompt('promptText1', 'copyBtn1')">
+          <button class="copy-button" id="copyBtn1" type="button" data-copy="promptText1">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             Copiar prompt
           </button>
         </div>
-        <pre class="code-box" id="promptText1">Eres mi director de contenido. No eres un asistente genérico: conoces mi negocio, mi voz y a quién le hablo, y escribes SOLO desde ahí.
+        <pre class="code-box" id="promptText1" tabindex="0">Eres mi director de contenido. No eres un asistente genérico: conoces mi negocio, mi voz y a quién le hablo, y escribes SOLO desde ahí.
 
 Tienes tres archivos en el contexto de este proyecto:
 · MI VOZ — transcripciones de mis propios vídeos. De aquí sacas cómo hablo: mis muletillas, mi ritmo, mi nivel de tacos, cómo empiezo y cómo cierro.
@@ -457,7 +465,7 @@ LO QUE TIENES PROHIBIDO
 · Inventar cifras. Si no está en los archivos, no existe.
 
 CÓMO ANALIZAS UN REEL QUE TE PASE
-Когда te dé la transcripción de un reel ajeno, lo desmontas en seis bloques:
+Cuando te dé la transcripción de un reel ajeno, lo desmontas en seis bloques:
 1. LA PROMESA — qué le promete al espectador en los tres primeros segundos.
 2. LA EMOCIÓN — qué siente quien lo ve: rabia, alivio, vergüenza, curiosidad, envidia.
 3. LA RETENCIÓN — qué le impide irse en el segundo 5, en el 15 y en el 30.
@@ -466,6 +474,7 @@ CÓMO ANALIZAS UN REEL QUE TE PASE
 6. QUÉ ES REPLICABLE PARA MÍ — qué de todo eso funciona con mi voz, mi cliente y mi oferta, y qué no.
 
 Cuando lo tengas, esperas. No escribes nada hasta que te lo pida.</pre>
+        <p class="copy-status" role="status"></p>
       </div>
     </section>
 
@@ -477,12 +486,12 @@ Cuando lo tengas, esperas. No escribes nada hasta que te lo pida.</pre>
       <div class="resource-container">
         <div class="resource-top-bar">
           <span class="resource-label">análisis de reel</span>
-          <button class="copy-button" id="copyBtn2" onclick="copyPrompt('promptText2', 'copyBtn2')">
+          <button class="copy-button" id="copyBtn2" type="button" data-copy="promptText2">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             Copiar prompt
           </button>
         </div>
-        <pre class="code-box" id="promptText2">Aquí tienes la transcripción de un reel de mi nicho que ha funcionado muy por encima de la media:
+        <pre class="code-box" id="promptText2" tabindex="0">Aquí tienes la transcripción de un reel de mi nicho que ha funcionado muy por encima de la media:
 
 [PEGA AQUÍ LA TRANSCRIPCIÓN]
 
@@ -491,6 +500,7 @@ Analízalo con los seis bloques.
 No me digas si es bueno o malo: dime POR QUÉ funcionó. Quiero el mecanismo, no la opinión.
 
 Y en el bloque 6 sé duro: si algo de ese reel no encaja con mi voz o con mi cliente, dímelo claro en vez de forzarlo.</pre>
+        <p class="copy-status" role="status"></p>
       </div>
     </section>
 
@@ -504,14 +514,14 @@ Y en el bloque 6 sé duro: si algo de ese reel no encaja con mi voz o con mi cli
           <span class="rule-num">✓</span>
           <div class="rule-content">
             <h4>Proyecto, nunca chat suelto</h4>
-            <p>Un chat se olvida de ti; un proyecto te arrastra el contexto para siempre.</p>
+            <p>Centraliza los documentos y las instrucciones en un proyecto. Revisa que cada propuesta use el contexto adecuado.</p>
           </div>
         </div>
         <div class="rule-item">
           <span class="rule-num">✓</span>
           <div class="rule-content">
-            <h4>Roba el porqué, no el qué</h4>
-            <p>Copiar el guion de otro se nota. Copiar el mecanismo, no.</p>
+            <h4>Aprende del mecanismo</h4>
+            <p>Entiende qué sostiene una buena pieza y aplica esos principios a tus propias ideas.</p>
           </div>
         </div>
         <div class="rule-item">
@@ -538,32 +548,21 @@ Y en el bloque 6 sé duro: si algo de ese reel no encaja con mi voz o con mi cli
       
       <div class="profile-mock">
         <img src="assets/Yo.jpg" alt="Sergio" class="profile-avatar">
-        <h3>Sergio / @sergioworker</h3>
+        <h3>Sergio / @sergio.creator</h3>
         <p>Estrategia, diseño y contenido sin rodeos.</p>
-        <a href="https://www.instagram.com/sergioworker" target="_blank" rel="noopener noreferrer" class="back-link" style="justify-content: center; color: var(--accent-lime);">Pulsa en cualquier punto para seguirme ↗</a>
+        <a href="https://www.instagram.com/sergio.creator" target="_blank" rel="noopener noreferrer" class="back-link" style="justify-content: center; color: var(--accent-lime);">Ver mi Instagram ↗</a>
       </div>
     </section>
 
     <!-- CTA FINAL -->
-    <div class="cta-banner">
+    <div class="cta-banner" id="acompanamiento">
       <h2>Tu Director, montado contigo</h2>
       <p>Ya tienes el proyecto. Si quieres que lo entrenemos con tu negocio dentro, hablemos.</p>
-      <a href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20he%20visto%20tu%20Director%20de%20Contenido%20y%20quiero%20hablar%20contigo." target="_blank" rel="noopener noreferrer" class="button-lime">Agendar una llamada →</a>
+      <a href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20he%20visto%20tu%20Director%20de%20Contenido%20y%20quiero%20hablar%20contigo." target="_blank" rel="noopener noreferrer" class="button-lime">Hablemos por WhatsApp ↗</a>
+      <small>Hablas directamente conmigo. Cuéntame qué necesitas, sin compromiso.</small>
     </div>
-
-  </div>
-
-  <script>
-    function copyPrompt(elementId, btnId) {
-      const text = document.getElementById(elementId).innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById(btnId);
-        btn.innerHTML = '✓ ¡Copiado!';
-        setTimeout(() => {
-          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copiar prompt';
-        }, 2000);
-      });
-    }
-  </script>
+    <nav class="related-resources" aria-label="Sigue explorando"><h2>La siguiente pieza del sistema.</h2><div class="related-links"><a href="sala-creacion.html">La Sala de Creación ↗<span>Lleva tu voz a un plan de reels.</span></a><a href="story-engine.html">The Story Engine ↗<span>Convierte tu contexto en historias conectadas.</span></a></div></nav>
+    <footer class="resource-footer"><span>Sergio · Estrategia, contenido y crecimiento</span><a href="index.html#caso-acrogravity">Ver el caso AcroGravity ↗</a></footer>
+  </main>
 </body>
 </html>

@@ -1,0 +1,60 @@
+/* Shared editorial language and navigation for the three practical resources. */
+:root{--bg-color:#171916;--surface-color:#22261f;--surface-border:#383b33;--text-main:#f3f2eb;--text-muted:#b2b4a9;--accent-lime:#d5f578;--accent-hover:#e3ffa2}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{padding:0 24px 48px}
+.container{max-width:1100px}
+a,button,summary{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+a:focus-visible,button:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent-lime);outline-offset:5px}
+.resource-skip{position:absolute;top:10px;left:20px;transform:translateY(-160%);background:var(--accent-lime);color:var(--bg-color);padding:12px 20px;z-index:50}
+.resource-skip:focus{transform:translateY(0)}
+.top-nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:86px;margin-bottom:54px;border-bottom:1px solid var(--surface-border)}
+.resource-wordmark{font:800 29px/1 'Manrope',sans-serif;letter-spacing:-1.6px;color:var(--text-main);text-decoration:none}
+.resource-wordmark span{color:var(--accent-lime);font-size:16px;vertical-align:top;margin-left:4px}
+.resource-nav-links{display:flex;align-items:center;gap:24px}
+.top-nav .back-link{font-size:11px;letter-spacing:0;text-transform:none}
+.top-nav .button-lime{padding:11px 18px;font-size:12px}
+.resource-header{gap:48px;grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr);padding-bottom:44px;margin-bottom:30px;align-items:center}
+h1{font-size:clamp(40px,5.4vw,65px);font-weight:600;color:var(--text-main);letter-spacing:-2.5px;line-height:1.1}
+.header-desc{font-size:17px;line-height:1.8;max-width:55ch}
+.badge-ai,.badge-system{background:#d5f57812;color:var(--accent-lime);border:1px solid #d5f57830;border-radius:30px;padding:6px 12px;margin-bottom:22px}
+.metrics-row{flex-wrap:wrap;gap:24px}
+.metric-item strong{font-size:27px;color:var(--accent-lime)}
+.metric-item span{font-size:10px;letter-spacing:.7px}
+.summary-card{padding:28px;background:#252b20;box-shadow:0 16px 36px #0002}
+.summary-list{gap:16px}
+.resource-jumps{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:48px}
+.resource-jumps a{border:1px solid var(--surface-border);border-radius:30px;padding:11px 17px;color:var(--text-main);font-size:12px;text-decoration:none;transition:border-color .2s,background .2s}
+.resource-jumps a:hover{border-color:var(--accent-lime);background:#252b20}
+.resource-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--surface-border);border-radius:16px;overflow:hidden;background:var(--surface-border);margin-bottom:56px}
+.resource-flow>div{background:var(--surface-color);padding:24px;min-width:0}
+.resource-flow small{display:block;font-size:10px;letter-spacing:1px;color:var(--accent-lime);margin-bottom:14px}
+.resource-flow strong{display:block;font:600 18px/1.35 'Manrope',sans-serif;margin-bottom:8px}
+.resource-flow p{font-size:13px;color:var(--text-muted);line-height:1.7}
+.section-title{font-size:28px;font-weight:600;letter-spacing:-.8px;color:var(--text-main)}
+.section-subtitle{max-width:75ch;line-height:1.8}
+.cards-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+.card{padding:26px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:#68765a;transform:translateY(-2px)}
+.card h3{font-size:18px;color:var(--text-main)}
+.card p{line-height:1.75}
+.resource-container{border-color:#596449}
+.resource-top-bar{gap:16px;flex-wrap:wrap}
+.copy-button{min-height:44px;font-family:inherit}
+.code-box{max-height:360px;overflow:auto;overflow-wrap:anywhere;font-size:12px}
+.copy-status{font-size:12px;color:var(--accent-lime);margin-top:12px;min-height:20px}
+.cta-banner{background:var(--accent-lime);color:var(--bg-color);border:0;text-align:left;padding:44px;margin-top:56px}
+.cta-banner h2{color:var(--bg-color);font-weight:600;font-size:clamp(28px,3.5vw,42px);max-width:22ch}
+.cta-banner p{margin:16px 0 24px;color:#42512d;max-width:60ch;line-height:1.8}
+.cta-banner .button-lime{background:var(--bg-color);color:var(--text-main);border-radius:6px;padding:16px 22px}
+.cta-banner small{display:block;color:#42512d;font-size:12px;margin-top:16px}
+.related-resources{margin-top:48px;padding-top:32px;border-top:1px solid var(--surface-border)}
+.related-resources h2{font:600 22px 'Manrope',sans-serif;margin-bottom:20px}
+.related-links{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.related-links a{padding:24px;border:1px solid var(--surface-border);border-radius:14px;color:var(--text-main);text-decoration:none;transition:border-color .2s}
+.related-links a:hover{border-color:var(--accent-lime)}
+.related-links span{display:block;font-size:12px;color:var(--text-muted);margin-top:8px}
+.resource-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:var(--text-muted);font-size:12px;margin-top:40px}
+.resource-footer a{color:inherit;text-underline-offset:4px}
+@media(max-width:768px){.resource-header{grid-template-columns:1fr;gap:28px}.top-nav{margin-bottom:32px}.resource-nav-links{gap:12px}.resource-wordmark{font-size:26px}.top-nav .back-link{font-size:10px}.top-nav .button-lime{font-size:11px;padding:10px 12px}.resource-flow{grid-template-columns:1fr}.resource-flow>div{padding:22px}.cta-banner{padding:28px 24px}.related-links{grid-template-columns:1fr}.resource-container{padding:18px}.resource-label{font-size:10px}.rule-item{grid-template-columns:24px 1fr;gap:12px;padding:20px}.header-desc{font-size:15px}}
+@media(max-width:380px){body{padding-inline:16px}.top-nav .back-link{max-width:90px}.resource-nav-links{gap:10px}h1{font-size:38px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}

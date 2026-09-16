@@ -420,20 +420,24 @@
       background-color: var(--accent-hover);
     }
   </style>
+  <link rel="stylesheet" href="assets/resources.css">
+  <script src="assets/resources.js" defer></script>
 </head>
 <body>
 
-  <div class="container">
-    <nav class="top-nav">
-      <a href="index.html" class="back-link">← Volver al portfolio</a>
+  <a class="resource-skip" href="#contenido">Saltar al contenido</a>
+  <main class="container" id="contenido">
+    <nav class="top-nav" aria-label="Navegación principal">
+      <a class="resource-wordmark" href="index.html" aria-label="Sergio, inicio">sergio<span aria-hidden="true">✳</span></a>
+      <div class="resource-nav-links"><a href="index.html#sistemas" class="back-link">← Todos los sistemas</a><a href="#acompanamiento" class="button-lime">Hablemos ↗</a></div>
     </nav>
 
     <!-- HEADER -->
     <header class="resource-header">
       <div>
-        <span class="badge-ai">Agente IA</span>
+        <span class="badge-ai">02 / IA + VENTA · Recurso gratuito</span>
         <h1>El Story Engine</h1>
-        <p class="header-desc">Los reels te hacen crecer. Las historias te hacen cobrar. Un motor con 5 skills que decide, escribe y mejora tus historias por ti. Tú escribes una palabra al día.</p>
+        <p class="header-desc">Dale continuidad a la atención que ganas con tus reels. Un sistema para transformar lo que sucede en tu negocio en historias que conectan, explican tu oferta y abren conversaciones.</p>
         
         <div class="metrics-row">
           <div class="metric-item">
@@ -462,12 +466,14 @@
         </ul>
       </div>
     </header>
+    <nav class="resource-jumps" aria-label="Explorar este recurso"><a href="#guia">01 · Cómo funciona</a><a href="#recurso">02 · Copiar el recurso</a><a href="#acompanamiento">03 · Adaptarlo a mi negocio</a></nav>
+    <div class="resource-flow" aria-label="De una experiencia a una secuencia de historias"><div><small>ENTRADA</small><strong>Algo real que contar</strong><p>Una pregunta de un cliente, un proceso o un resultado documentado.</p></div><div><small>PROCESO</small><strong>Una secuencia con intención</strong><p>Contexto, aprendizaje y conexión con tu oferta.</p></div><div><small>SALIDA</small><strong>Historias listas para revisar</strong><p>Un hilo de 3 a 5 historias y un siguiente paso claro para tu audiencia.</p></div></div>
 
     <!-- SECCIÓN 01 -->
-    <section class="section-block">
+    <section class="section-block" id="guia">
       <div class="section-tag">01 · Para qué sirve</div>
-      <h2 class="section-title">Las historias que te hacen cobrar</h2>
-      <p class="section-subtitle">Los reels te hacen crecer; las historias te hacen cobrar. El Story Engine es un motor con 5 skills que decide, escribe y mejora tus historias por ti. Tú escribes una palabra al día y ejecutas lo que te entrega.</p>
+      <h2 class="section-title">De publicar historias a construir una conversación</h2>
+      <p class="section-subtitle">Cinco funciones conectan tu contexto, el calendario, la escritura, las llamadas a la acción y el análisis. Tú aportas datos reales, revisas las propuestas y decides qué publicar.</p>
       
       <div class="cards-grid">
         <div class="card">
@@ -510,7 +516,7 @@
 
       <div class="highlight-box">
         <span class="card-number">LO QUE ESTO SIGNIFICA EN LA PRÁCTICA</span>
-        <p>Tú no decides qué historia subir ni cómo escribirla. Escribes la orden TANDA y el motor te da las historias de hoy, listas para grabar. Solo vendes martes y viernes; el resto, valor.</p>
+        <p>Con la orden TANDA recibes una propuesta de historias para hoy. Revisas el contenido y lo adaptas antes de grabar. El calendario inicial reserva martes y viernes para las secuencias de venta.</p>
       </div>
     </section>
 
@@ -537,7 +543,7 @@
         <div class="card">
           <span class="card-number">SKILLS</span>
           <h3 style="font-size: 20px; color: var(--accent-lime);">5 skills</h3>
-          <p>trabajando por ti en automático.</p>
+          <p>conectadas en un mismo flujo de trabajo.</p>
         </div>
         <div class="card">
           <span class="card-number">VENTAS</span>
@@ -547,7 +553,7 @@
         <div class="card">
           <span class="card-number">RITMO</span>
           <h3 style="font-size: 20px; color: var(--accent-lime);">1 palabra</h3>
-          <p>al día: TANDA. El resto lo hace el motor.</p>
+          <p>para solicitar la propuesta del día: TANDA.</p>
         </div>
       </div>
 
@@ -593,20 +599,20 @@
         <div class="card"><span class="card-number">03</span><h3>Responde y ejecuta</h3><p>Contesta las preguntas y ya tienes tu output listo.</p></div>
       </div>
 
-      <button class="action-button-toggle" id="applyBtn" onclick="toggleApplied()">
+      <button class="action-button-toggle" id="applyBtn" type="button" aria-pressed="false">
         <span>Marcar como aplicado ✓</span>
       </button>
       <span style="display: block; font-size: 12px; color: var(--text-muted); margin-top: 8px;">Márcalo cuando lo tengas funcionando</span>
 
-      <div class="resource-container" style="margin-top: 40px;">
+      <div class="resource-container" id="recurso" style="margin-top: 40px;">
         <div class="resource-top-bar">
           <span class="resource-label">el prompt del motor</span>
-          <button class="copy-button" id="copyBtn" onclick="copyPrompt()">
+          <button class="copy-button" id="copyBtn" type="button" data-copy="promptText">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             Copiar recurso
           </button>
         </div>
-        <pre class="code-box" id="promptText">Actúa como el STORY ENGINE: el motor autónomo de historias de Instagram de mi negocio. Tu trabajo es decidir por mí qué historias subo cada día, escribirlas listas para grabar y mejorar con mis métricas. Yo no decido nada: yo ejecuto lo que tú me entregas.
+        <pre class="code-box" id="promptText" tabindex="0">Actúa como el STORY ENGINE: el sistema de historias de Instagram de mi negocio. Tu trabajo es proponer qué historias publicar, escribir borradores para grabar y mejorarlos con mis métricas. Yo reviso, ajusto y decido qué publicar.
 
 Funcionas con 5 skills internas y un sistema de órdenes:
 - CARGA: entrevista inicial para llenar el STORY BRAIN (solo la primera vez)
@@ -625,39 +631,19 @@ REGLAS INNEGOCIABLES DEL MOTOR:
 Los 5 pilares de munición: Mecanismo · Misión · Transformación · Día a día · Resultados.
 
 Empieza pidiéndome la orden CARGA para llenar el STORY BRAIN.</pre>
+        <p class="copy-status" role="status"></p>
       </div>
     </section>
 
     <!-- CTA FINAL -->
-    <div class="cta-banner">
-      <h2>¿Quieres que las historias cierren solas?</h2>
-      <p>El Story Engine escribe. Nosotros conectamos historias, oferta y cierre para que el sistema cobre por ti.</p>
-      <a href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20he%20visto%20tu%20Story%20Engine%20y%20quiero%20hablar%20contigo." target="_blank" rel="noopener noreferrer" class="button-lime">Agenda tu llamada →</a>
+    <div class="cta-banner" id="acompanamiento">
+      <h2>Conectemos tus historias con tu negocio.</h2>
+      <p>El recurso te da una estructura. Podemos trabajar juntos la oferta, el mensaje y el recorrido desde la primera historia hasta la conversación.</p>
+      <a href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20he%20visto%20tu%20Story%20Engine%20y%20quiero%20hablar%20contigo." target="_blank" rel="noopener noreferrer" class="button-lime">Hablemos por WhatsApp ↗</a>
+      <small>Hablas directamente conmigo. Cuéntame qué necesitas, sin compromiso.</small>
     </div>
-
-  </div>
-
-  <script>
-    function copyPrompt() {
-      const text = document.getElementById('promptText').innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById('copyBtn');
-        btn.innerHTML = '✓ ¡Copiado!';
-        setTimeout(() => {
-          btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copiar recurso';
-        }, 2000);
-      });
-    }
-
-    function toggleApplied() {
-      const btn = document.getElementById('applyBtn');
-      btn.classList.toggle('applied');
-      if(btn.classList.contains('applied')) {
-        btn.innerHTML = '<span>¡Aplicado con éxito! ✓</span>';
-      } else {
-        btn.innerHTML = '<span>Marcar como aplicado ✓</span>';
-      }
-    }
-  </script>
+    <nav class="related-resources" aria-label="Sigue explorando"><h2>La siguiente pieza del sistema.</h2><div class="related-links"><a href="sala-creacion.html">La Sala de Creación ↗<span>Planifica los reels que alimentan tu comunidad.</span></a><a href="director-contenido.html">Tu Director de Contenido ↗<span>Afina tu voz antes de escribir.</span></a></div></nav>
+    <footer class="resource-footer"><span>Sergio · Estrategia, contenido y crecimiento</span><a href="index.html#caso-acrogravity">Ver el caso AcroGravity ↗</a></footer>
+  </main>
 </body>
 </html>

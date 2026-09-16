@@ -37,7 +37,7 @@
 
   const cards = [...document.querySelectorAll('.project-card')];
   const gallery = document.querySelector('.evidence-gallery');
-  const galleryLinks = [...document.querySelectorAll('.evidence')];
+  const galleryLinks = [...document.querySelectorAll('a.evidence[href]')];
   const dialog = document.querySelector('.lightbox');
   const menu = document.querySelector('.main-nav');
   const menuToggle = document.querySelector('.menu-toggle');
@@ -48,6 +48,7 @@
   }
 
   function setTopic(topic) {
+    if (!Object.hasOwn(topicMessages[language], topic)) return;
     selectedTopic = topic;
     document.querySelectorAll('[data-topic]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.topic === topic));
@@ -168,11 +169,71 @@
         });
       });
     }, { rootMargin: '-15% 0px -65% 0px', threshold: 0 });
-    document.querySelectorAll('main > section[id]').forEach(section => navObserver.observe(section));
+    document.querySelectorAll('main > section[id], #caso-acrogravity').forEach(section => navObserver.observe(section));
   }
 
   document.querySelector('#year').textContent = String(new Date().getFullYear());
   let savedLanguage;
   try { savedLanguage = localStorage.getItem('sergio-portfolio-language'); } catch { /* Spanish remains the default. */ }
   setLanguage(savedLanguage || 'es');
+
+  // Load the film only after an explicit request; native dialog provides focus trapping.
+  const videoModal = document.getElementById('video-modal');
+  if (videoModal && typeof videoModal.showModal === 'function') {
+    const video = videoModal.querySelector('video');
+    const soundButton = videoModal.querySelector('.video-sound');
+    const playbackNote = videoModal.querySelector('.video-playback-note');
+    videoModal.querySelector('.video-audio-tools').hidden = false;
+    const updateSoundButton = () => soundButton.setAttribute('aria-pressed', String(!video.muted && video.volume > 0));
+    function playWithSound() {
+      video.muted = false;
+      video.defaultMuted = false;
+      video.volume = 1;
+      updateSoundButton();
+      playbackNote.hidden = true;
+      video.play().catch(() => {
+        if (videoModal.open && video.paused && !video.error) playbackNote.hidden = false;
+      });
+    }
+    soundButton.addEventListener('click', () => {
+      if (video.muted || video.volume === 0) playWithSound();
+      else video.muted = true;
+    });
+    video.addEventListener('volumechange', updateSoundButton);
+    video.addEventListener('playing', () => { playbackNote.hidden = true; });
+    let trigger;
+    document.querySelectorAll('[data-video-trigger]').forEach(link => {
+      link.setAttribute('aria-haspopup', 'dialog');
+      link.setAttribute('aria-controls', videoModal.id);
+      link.addEventListener('click', event => {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        trigger = link;
+        videoModal.showModal();
+        document.body.classList.add('modal-open');
+        if (!video.getAttribute('src')) video.src = video.dataset.src;
+        playWithSound();
+      });
+    });
+    video.addEventListener('error', () => { videoModal.querySelector('.video-error').hidden = false; });
+    videoModal.querySelector('.video-modal-close').addEventListener('click', () => videoModal.close());
+    videoModal.addEventListener('click', event => {
+      const bounds = videoModal.getBoundingClientRect();
+      if (event.target === videoModal && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) videoModal.close();
+    });
+    videoModal.addEventListener('close', () => {
+      video.pause();
+      document.body.classList.remove('modal-open');
+      trigger?.focus({ preventScroll: true });
+    });
+    videoModal.querySelector('[data-video-contact]').addEventListener('click', () => {
+      videoModal.close();
+      requestAnimationFrame(() => document.querySelector('#whatsapp-link').focus({ preventScroll: true }));
+    });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
+  }
+
+  const topicFromLink = new URLSearchParams(location.search).get('service');
+  if (topicFromLink) setTopic(topicFromLink);
+
 })();

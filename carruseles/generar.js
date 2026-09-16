@@ -11,6 +11,10 @@ const CARROUSELS = [
 ];
 
 (async () => {
+  const missing = CARROUSELS.filter(carousel => !fs.existsSync(path.join(__dirname, carousel.name, 'carrousel.html')));
+  if (missing.length) {
+    throw new Error(`Faltan las plantillas de carrusel: ${missing.map(carousel => `${carousel.name}/carrousel.html`).join(', ')}. Añádelas antes de generar las imágenes.`);
+  }
   const browser = await chromium.launch({ headless: true });
   const context = await browser.newContext({
     viewport: { width: 1080, height: 1080 },
