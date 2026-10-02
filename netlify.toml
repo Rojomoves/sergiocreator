@@ -3,6 +3,16 @@
   functions = "."
 
 [[redirects]]
+  from = "/videos"
+  to = "/videos.html"
+  status = 200
+
+[[redirects]]
+  from = "/videos/"
+  to = "/videos.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/landingpage.html"
   status = 200

@@ -3,513 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio de Edición de Video de Alto Impacto | Sergio</title>
-  <meta name="description" content="Edición de vídeo profesional orientada a retención y crecimiento orgánico para creadores de gran escala y marcas. ¡Hablemos!">
+  <meta name="theme-color" content="#111413">
+  <title>Sergio — Editor de vídeo para YouTube, Reels y marcas</title>
+  <meta name="description" content="Edición de vídeo con intención. Descubre mis trabajos para YouTube, Reels y marcas. Adobe Premiere Pro para proyectos complejos y CapCut para contenido social.">
+  <meta property="og:title" content="Sergio — Tu contenido, en su mejor versión">
+  <meta property="og:description" content="Portfolio de edición de vídeo: YouTube, Reels y contenido para marcas. Mira los trabajos y hablemos de tu próximo vídeo.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/portfolio.css?v=20260916-audio">
-  <style>
-    body {
-      background-color: #121212;
-      color: #e0e0e0;
-      font-family: 'DM Sans', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-    a {
-      color: #76b041;
-      text-decoration: none;
-    }
-    a:hover, a:focus {
-      text-decoration: underline;
-      color: #9adb59;
-    }
-    .container {
-      max-width: 1080px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    /* Estilos del Header Lineal con Menú Hamburguesa CRO */
-    .site-header {
-      background: linear-gradient(90deg, rgba(31,31,31,0.95) 0%, rgba(35,35,35,0.98) 100%);
-      border-bottom: 2px solid rgba(118, 180, 65, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-    .header-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0.8rem 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .wordmark {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #fff;
-      letter-spacing: -0.5px;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .wordmark span {
-      color: #76b041;
-      margin-left: 2px;
-    }
-    .main-nav {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-weight: 600;
-    }
-    .main-nav a {
-      padding: 0.5rem 0.9rem;
-      color: #ccc;
-      border-radius: 20px;
-      background-color: rgba(255, 255, 255, 0.03);
-      transition: all 0.25s ease;
-      font-size: 0.95rem;
-      white-space: nowrap;
-    }
-    .main-nav a:hover, .main-nav a:focus {
-      background-color: #76b041;
-      color: #121212;
-      outline: none;
-      text-decoration: none;
-    }
-    .main-nav a.active {
-      background-color: #9adb59;
-      color: #121212;
-    }
-    .nav-cta {
-      background-color: #76b041 !important;
-      color: #121212 !important;
-      font-weight: 700;
-    }
-
-    /* Botón Hamburguesa */
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.5rem;
-      color: #76b041;
-    }
-    .menu-toggle svg {
-      width: 28px;
-      height: 28px;
-      fill: currentColor;
-    }
-
-    /* Hero Section Optimizado CRO */
-    .hero-section {
-      text-align: center;
-      padding: 3rem 1rem 1.5rem 1rem;
-      max-width: 850px;
-      margin: 0 auto;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(118, 180, 65, 0.15);
-      color: #9adb59;
-      border: 1px solid rgba(118, 180, 65, 0.4);
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-weight: 700;
-      font-size: 2.4rem;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.5px;
-      color: #fff;
-      line-height: 1.2;
-    }
-    .subtitle-hero {
-      font-size: 1.15rem;
-      color: #ccc;
-      margin-bottom: 2rem;
-      font-weight: 400;
-      line-height: 1.5;
-    }
-    .subtitle-hero strong {
-      color: #fff;
-    }
-    .video-section-header {
-      margin-top: 3.5rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      color: #76b041;
-      border-bottom: 2px solid #76b041;
-      padding-bottom: 0.3em;
-      font-size: 1.75rem;
-    }
-    .intro-text {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-      color: #bbb;
-    }
-    .video-category {
-      margin-top: 1.5rem;
-      font-weight: 600;
-      font-size: 1.3rem;
-      color: #a3d65c;
-      margin-bottom: 0.3rem;
-      border-left: 6px solid #76b041;
-      padding-left: 0.75rem;
-    }
-    .video-description {
-      margin-bottom: 1.2rem;
-      color: #aaa;
-      line-height: 1.5;
-    }
-    .instagram-link {
-      display: inline-flex;
-      align-items: center;
-      margin-bottom: 1.2rem;
-      font-weight: 700;
-      color: #9adb59;
-      font-size: 0.95rem;
-    }
-    .instagram-link svg {
-      margin-left: 0.4rem;
-      fill: currentColor;
-      width: 18px;
-      height: 18px;
-    }
-
-    /* Sistema de Carrusel Horizontal */
-    .carousel-container {
-      position: relative;
-      margin-bottom: 2.5rem;
-    }
-    .carousel-track {
-      display: flex;
-      gap: 1.5rem;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding-bottom: 1rem;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
-      scrollbar-color: #76b041 rgba(35,35,35,0.5);
-    }
-    .carousel-track::-webkit-scrollbar {
-      height: 8px;
-    }
-    .carousel-track::-webkit-scrollbar-track {
-      background: rgba(35, 35, 35, 0.5);
-      border-radius: 10px;
-    }
-    .carousel-track::-webkit-scrollbar-thumb {
-      background: #76b041;
-      border-radius: 10px;
-    }
-    .video-card {
-      flex: 0 0 380px;
-      background-color: rgba(35, 35, 35, 0.85);
-      backdrop-filter: saturate(180%) blur(15px);
-      border-radius: 24px;
-      padding: 1.2rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-      scroll-snap-align: start;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(118, 180, 65, 0.2);
-    }
-    .video-card:hover {
-      box-shadow: 0 14px 24px rgba(118, 180, 65, 0.35);
-      border-color: rgba(118, 180, 65, 0.5);
-    }
-    .video-card iframe,
-    .video-card video {
-      width: 100%;
-      height: 220px;
-      border-radius: 16px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-      outline: none;
-      display: block;
-      background: #000;
-    }
-    .video-card video {
-      height: 420px;
-      object-fit: cover;
-    }
-
-    /* Estilos del CTA de conversión integrado */
-    .conversion-box {
-      background: linear-gradient(135deg, rgba(118, 180, 65, 0.15) 0%, rgba(35, 35, 35, 0.95) 100%);
-      border: 1px solid #76b041;
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      margin: 4rem auto 2rem auto;
-      max-width: 720px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
-    }
-    .conversion-box h3 {
-      font-size: 1.6rem;
-      color: #fff;
-      margin-top: 0;
-      margin-bottom: 0.5rem;
-    }
-    .conversion-box p {
-      color: #ccc;
-      font-size: 1.05rem;
-      margin-bottom: 1.8rem;
-    }
-    .btn-primary {
-      display: inline-block;
-      background-color: #76b041;
-      color: #121212;
-      font-weight: 700;
-      padding: 0.9rem 2.4rem;
-      border-radius: 30px;
-      font-size: 1.1rem;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(118, 180, 65, 0.4);
-      text-decoration: none;
-    }
-    .btn-primary:hover, .btn-primary:focus {
-      background-color: #9adb59;
-      color: #121212;
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(154, 219, 89, 0.6);
-      text-decoration: none;
-    }
-
-    /* WhatsApp Floating Button */
-    .whatsapp-float {
-      position: fixed;
-      width: 58px;
-      height: 58px;
-      bottom: 30px;
-      right: 30px;
-      background-color: #25D366;
-      color: #fff;
-      border-radius: 50%;
-      text-align: center;
-      box-shadow: 0 6px 12px rgba(37, 211, 102, 0.6);
-      z-index: 10000;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .whatsapp-float:hover {
-      background-color: #128c41;
-      transform: scale(1.08);
-    }
-    .whatsapp-icon {
-      width: 28px;
-      height: 28px;
-      fill: white;
-      display: block;
-    }
-
-    /* Responsive Media Queries */
-    @media (max-width: 900px) {
-      .menu-toggle {
-        display: block;
-      }
-      .main-nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: rgba(18, 18, 18, 0.98);
-        backdrop-filter: blur(15px);
-        flex-direction: column;
-        align-items: stretch;
-        padding: 1.5rem 1rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-        border-bottom: 2px solid #76b041;
-        gap: 0.8rem;
-        box-sizing: border-box;
-      }
-      .main-nav.is-open {
-        display: flex !important;
-      }
-      .main-nav a {
-        text-align: center;
-        padding: 0.8rem;
-        font-size: 1.1rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .video-card {
-        flex: 0 0 300px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/premium.css?v=20261002">
+  <link rel="stylesheet" href="assets/videos.css?v=20261002">
+  <script src="assets/videos.js?v=20261002" defer></script>
 </head>
-<body>
-
-  <!-- Header Optimizado -->
+<body class="video-portfolio">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
-    <div class="header-inner">
-      <a class="wordmark" href="index.html" aria-label="Sergio, inicio">sergio<span>✳</span></a>
-      
-      <button class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-        </svg>
-      </button>
-
-      <nav class="main-nav" aria-label="Navegación principal">
+    <div class="container header-inner">
+      <a class="wordmark" href="index.html" aria-label="Sergio, inicio">sergio<span aria-hidden="true">✳</span></a>
+      <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
         <a href="index.html">Inicio</a>
-        <a href="videos.html" class="active">Vídeos</a>
-        <a href="https://wa.me/34643105522?text=Hola%20Sergio,%20quiero%20contratar%20tus%20servicios%20de%20edición." class="nav-cta" target="_blank" rel="noopener">Hablemos ↗</a>
+        <a href="#trabajos" class="nav-featured">Mis vídeos</a>
+        <a href="#edicion">Qué puedo hacer</a>
+        <a href="#proceso">Cómo trabajamos</a>
       </nav>
+      <div class="header-actions">
+        <a class="button button-lime button-small header-cta" href="#contacto">Hablemos <span aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Abrir menú" hidden><span></span><span></span></button>
+      </div>
     </div>
   </header>
 
-  <main class="container" id="contenido">
-    <div class="hero-section">
-      <div class="hero-badge">⚡ Edición orientada a retención y CTR</div>
-      <h1>Retén a tu Audiencia en los Primeros Segundos y Escala tus Visualizaciones</h1>
-      <p class="subtitle-hero">
-        Transformo bruto en piezas de alto impacto visual con experiencia validada en creadores top como <strong>Guillem Ojeda (+12M)</strong>.
-      </p>
-    </div>
+  <main id="contenido">
+    <section class="edit-hero container" aria-labelledby="edit-title">
+      <div class="edit-hero-copy">
+        <p class="eyebrow">SERGIO / EDITOR DE VÍDEO</p>
+        <h1 id="edit-title">Tu contenido.<br>En su <span>mejor versión.</span></h1>
+        <p class="edit-lead">Tú traes la idea. Yo le doy ritmo, claridad y una edición que invita a seguir mirando.</p>
+        <p class="edit-detail">Vídeos para YouTube, Reels y marcas. Trabajas directamente conmigo, desde el primer corte hasta la entrega.</p>
+        <div class="hero-buttons">
+          <a class="button button-lime" href="#trabajos">Ver mis trabajos <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" href="#contacto">Cuéntame tu idea <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="editing-tools" aria-label="Herramientas de edición">
+          <span><svg class="tool-icon premiere-icon" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#242047"/><text x="7" y="27" fill="#c8baff" font-family="Arial,sans-serif" font-size="23" font-weight="600">Pr</text></svg><span>Adobe Premiere Pro<small>Proyectos complejos</small></span></span>
+          <span><svg class="tool-icon" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="10" fill="#f4f6f3"/><path d="M10 11h20v5L10 27v3h20v-6L10 14v-3m0 7v8m20-14v-3" fill="none" stroke="#151817" stroke-width="2.8" stroke-linejoin="round"/></svg><span>CapCut<small>Contenido social</small></span></span>
+        </div>
+      </div>
+    </section>
 
-    <!-- Sección de Videos Largos en Carrusel -->
-    <section id="videos-largos">
-      <h2 class="video-section-header">Videos Largos (YouTube)</h2>
-      <p class="intro-text">
-        Estrategias de edición dinámicas enfocadas en maximizar la retención de audiencia de principio a fin. Desliza para explorar los trabajos.
-      </p>
+    <div class="format-strip container" aria-label="Formatos de vídeo"><span>UNA IDEA. EL FORMATO ADECUADO.</span><span>YouTube</span><span>Reels & Shorts</span><span>Contenido de marca</span></div>
 
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="video-card" tabindex="0">
-            <iframe src="https://www.youtube.com/embed/YUQYsLqeAqo" title="Video para Alpha X (Estilo Trading)" frameborder="0" loading="lazy" allowfullscreen></iframe>
+    <section class="edit-work container" id="trabajos" aria-labelledby="work-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / PORTFOLIO SELECCIONADO</p><h2 id="work-title">Dale al play.<br><span class="accent">La edición habla.</span></h2></div><p class="section-intro">Distintas marcas, distintos ritmos. Explora los proyectos y encuentra el estilo que encaja con tu contenido.</p></div>
+      <nav class="format-nav" aria-label="Explorar por formato"><a href="#videos-largos">YouTube <span>02</span></a><a href="#videos-cortos">Reels & Shorts <span>05</span></a><a href="#contacto">Tu próximo vídeo <span aria-hidden="true">↗</span></a></nav>
+
+      <div class="work-group" id="videos-largos">
+        <div class="work-group-heading"><div><p class="eyebrow">FORMATO LARGO</p><h3>Una historia que merece quedarse.</h3></div><p>Estructura, ritmo y claridad para YouTube.</p></div>
+        <div class="long-video-grid">
+          <article class="film-card">
+            <div class="youtube-frame"><a class="youtube-preview" href="https://www.youtube.com/watch?v=YUQYsLqeAqo" data-youtube="YUQYsLqeAqo" aria-label="Reproducir proyecto de edición para Alpha X"><img src="assets/alpha-x-poster.jpg" width="480" height="360" alt="Trading con criptomonedas desde cero, proyecto Alpha X" loading="lazy"><span class="play-icon" aria-hidden="true">▶</span></a></div>
+            <div class="film-copy"><p class="film-label">YOUTUBE / TRADING</p><h4>Alpha X</h4><p>Edición de contenido sobre trading: información con un ritmo visual que acompaña al discurso.</p><a href="https://www.youtube.com/watch?v=YUQYsLqeAqo" target="_blank" rel="noopener noreferrer">Ver en YouTube <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="film-card">
+            <div class="youtube-frame"><a class="youtube-preview" href="https://www.youtube.com/watch?v=F4V7q26VdYM" data-youtube="F4V7q26VdYM" aria-label="Reproducir tutorial sobre tiendas online con Hostinger"><img src="assets/hostinger-poster.jpg" width="480" height="360" alt="Cómo crear una tienda online con Hostinger" loading="lazy"><span class="play-icon" aria-hidden="true">▶</span></a></div>
+            <div class="film-copy"><p class="film-label">YOUTUBE / TUTORIAL</p><h4>Una tienda online, paso a paso</h4><p>Tutorial sobre Hostinger. Una edición pensada para que cada paso se entienda y sea fácil de seguir.</p><a href="https://www.youtube.com/watch?v=F4V7q26VdYM" target="_blank" rel="noopener noreferrer">Ver en YouTube <span aria-hidden="true">↗</span></a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="work-group" id="videos-cortos">
+        <div class="work-group-heading"><div><p class="eyebrow">FORMATO VERTICAL</p><h3>Pocos segundos. Mucha intención.</h3></div><p>Reels, TikTok y Shorts con identidad propia.</p></div>
+        <div class="reel-project" id="boxeo">
+          <div class="reel-project-heading"><div><h4>Club de Boxeo Vinarós</h4><p>La energía del entrenamiento, llevada a la pantalla.</p></div><a class="text-link" href="https://www.instagram.com/club_boxeovinaros/" target="_blank" rel="noopener noreferrer">Ver el club <span aria-hidden="true">↗</span></a></div>
+          <div class="reel-grid">
+            <figure class="reel-card"><video controls playsinline preload="none" poster="assets/boxeo-1-poster.jpg" aria-label="Club de Boxeo Vinarós, proyecto 1"><source src="assets/videos-cortos/boxeo-1.mp4" type="video/mp4"></video><figcaption><span>Club de Boxeo Vinarós</span><small>01 / Reel</small><a class="video-fallback" href="assets/videos-cortos/boxeo-1.mp4">Abrir vídeo ↗</a></figcaption></figure>
+            <figure class="reel-card"><video controls playsinline preload="none" poster="assets/boxeo-2-poster.jpg" aria-label="Club de Boxeo Vinarós, proyecto 2"><source src="assets/videos-cortos/boxeo-2.mp4" type="video/mp4"></video><figcaption><span>Club de Boxeo Vinarós</span><small>02 / Reel</small><a class="video-fallback" href="assets/videos-cortos/boxeo-2.mp4">Abrir vídeo ↗</a></figcaption></figure>
+            <figure class="reel-card"><video controls playsinline preload="none" poster="assets/boxeo-3-poster.jpg" aria-label="Club de Boxeo Vinarós, proyecto 3"><source src="assets/videos-cortos/boxeo-3.mp4" type="video/mp4"></video><figcaption><span>Club de Boxeo Vinarós</span><small>03 / Reel</small><a class="video-fallback" href="assets/videos-cortos/boxeo-3.mp4">Abrir vídeo ↗</a></figcaption></figure>
           </div>
-          <div class="video-card" tabindex="0">
-            <iframe src="https://www.youtube.com/embed/F4V7q26VdYM" title="Cómo crear una Tienda Online para Hostinger" frameborder="0" loading="lazy" allowfullscreen></iframe>
+        </div>
+        <div class="reel-project" id="astrum">
+          <div class="reel-project-heading"><div><h4>Astrum · Productora musical</h4><p>Imagen y música, hablando el mismo idioma.</p></div><a class="text-link" href="https://www.instagram.com/astrumstudios/" target="_blank" rel="noopener noreferrer">Ver el estudio <span aria-hidden="true">↗</span></a></div>
+          <div class="reel-grid">
+            <figure class="reel-card"><video controls playsinline preload="none" poster="assets/productora-musical-poster.jpg" aria-label="Astrum, proyecto musical 1"><source src="assets/videos-cortos/productora-musical.mp4" type="video/mp4"></video><figcaption><span>Astrum Studios</span><small>01 / Reel</small><a class="video-fallback" href="assets/videos-cortos/productora-musical.mp4">Abrir vídeo ↗</a></figcaption></figure>
+            <figure class="reel-card"><video controls playsinline preload="none" poster="assets/productora-musical2-poster.jpg" aria-label="Astrum, proyecto musical 2"><source src="assets/videos-cortos/productora-musical2.mp4" type="video/mp4"></video><figcaption><span>Astrum Studios</span><small>02 / Reel</small><a class="video-fallback" href="assets/videos-cortos/productora-musical2.mp4">Abrir vídeo ↗</a></figcaption></figure>
+            <div class="reel-invitation"><span aria-hidden="true">✳</span><h4>El siguiente<br>podría ser tuyo.</h4><p>Cuéntame qué quieres transmitir y buscamos la forma de llevarlo a la pantalla.</p><a class="button button-quiet" href="#contacto">Hablemos de tu vídeo <span aria-hidden="true">↗</span></a></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Sección de Videos Cortos -->
-    <section id="videos-cortos">
-      <h2 class="video-section-header">Videos Cortos (Reels / TikTok / Shorts)</h2>
-      <p class="intro-text">
-        Contenido vertical diseñado científicamente para atrapar la atención de inmediato y disparar el alcance orgánico.
-      </p>
-
-      <!-- Categoría 1: Club de Boxeo Vinarós -->
-      <h3 class="video-category">Club de Boxeo Vinarós</h3>
-      <p class="video-description">Dinámica visual, ritmo enérgico y retención alta para conectar con la comunidad.</p>
-      <a href="https://instagram.com/club_boxeovinaros" target="_blank" rel="noopener" class="instagram-link" aria-label="Instagram Club Boxeo Vinarós">
-        @club_boxeovinaros
-        <svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M224.1 141c-63.6 0-115.1 51.5-115.1 115.1 0 63.6 51.5 115.1 115.1 115.1s115.1-51.5 115.1-115.1c0-63.6-51.5-115.1-115.1-115.1zm0 190.2c-41.7 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12 26.9-26.9 26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 26.9-26.9c14.9 0 26.9 12 26.9 26.9zM398.8 97.8c-1.7-35.7-9.9-67.1-36.3-93.5S322.6 7.2 286.9 5.4C244.9 3.3 203.1 3.3 161.1 5.4c-35.7 1.7-67.1 9.9-93.5 36.3S7.2 109.7 5.4 145.4c-2.2 42-2.2 83.8 0 125.8 1.7 35.7 9.9 67.1 36.3 93.5s57.8 34.6 93.5 36.3c42 2.2 83.8 2.2 125.8 0 35.7-1.7 67.1-9.9 93.5-36.3s34.6-57.8 36.3-93.5c2.2-42 2.2-83.8 0-125.8z"></path></svg>
-      </a>
-
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="video-card" tabindex="0">
-            <video controls preload="metadata">
-              <source src="assets/videos-cortos/boxeo-1.mp4" type="video/mp4">
-              Tu navegador no soporta esta etiqueta.
-            </video>
-          </div>
-          <div class="video-card" tabindex="0">
-            <video controls preload="metadata">
-              <source src="assets/videos-cortos/boxeo-2.mp4" type="video/mp4">
-              Tu navegador no soporta esta etiqueta.
-            </video>
-          </div>
-          <div class="video-card" tabindex="0">
-            <video controls preload="metadata">
-              <source src="assets/videos-cortos/boxeo-3.mp4" type="video/mp4">
-              Tu navegador no soporta esta etiqueta.
-            </video>
-          </div>
-        </div>
-      </div>
-
-      <!-- Categoría 2: Astrum -->
-      <h3 class="video-category">Astrum - Productora Musical</h3>
-      <p class="video-description">Estética visual cinematográfica sincronizada con experiencias sonoras únicas.</p>
-      <a href="https://instagram.com/astrumstudios" target="_blank" rel="noopener" class="instagram-link" aria-label="Instagram Astrum Studios">
-        @astrumstudios
-        <svg viewBox="0 0 448 512" aria-hidden="true" focusable="false"><path d="M224.1 141c-63.6 0-115.1 51.5-115.1 115.1 0 63.6 51.5 115.1 115.1 115.1s115.1-51.5 115.1-115.1c0-63.6-51.5-115.1-115.1-115.1zm0 190.2c-41.7 0-75.6-33.9-75.6-75.6s33.9-75.6 75.6-75.6 75.6 33.9 75.6 75.6-33.9 75.6-75.6 75.6zm146.4-194.3c0 14.9-12 26.9-26.9 26.9-14.9 0-26.9-12-26.9-26.9s12-26.9 26.9-26.9c14.9 0 26.9 12 26.9 26.9zM398.8 97.8c-1.7-35.7-9.9-67.1-36.3-93.5S322.6 7.2 286.9 5.4C244.9 3.3 203.1 3.3 161.1 5.4c-35.7 1.7-67.1 9.9-93.5 36.3S7.2 109.7 5.4 145.4c-2.2 42-2.2 83.8 0 125.8 1.7 35.7 9.9 67.1 36.3 93.5s57.8 34.6 93.5 36.3c42 2.2 83.8 2.2 125.8 0 35.7-1.7 67.1-9.9 93.5-36.3s34.6-57.8 36.3-93.5c2.2-42 2.2-83.8 0-125.8z"></path></svg>
-      </a>
-
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <div class="video-card" tabindex="0">
-            <video controls preload="metadata">
-              <source src="assets/videos-cortos/productora-musical.mp4" type="video/mp4">
-              Tu navegador no soporta esta etiqueta.
-            </video>
-          </div>
-          <div class="video-card" tabindex="0">
-            <video controls preload="metadata">
-              <source src="assets/videos-cortos/productora-musical2.mp4" type="video/mp4">
-              Tu navegador no soporta esta etiqueta.
-            </video>
-          </div>
-        </div>
+    <section class="edit-services container" id="edicion" aria-labelledby="editing-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / CADA CORTE TIENE UN PORQUÉ</p><h2 id="editing-title">Más que juntar planos.<br><span class="accent">Darles sentido.</span></h2></div><p class="section-intro">El formato cambia. El cuidado en la narrativa, el sonido y el acabado se mantiene.</p></div>
+      <div class="edit-service-grid">
+        <article class="glass-panel"><span class="service-number">01 / YOUTUBE</span><h3>Espacio para contar.</h3><p>De material en bruto a un vídeo con estructura. Selección de tomas, ritmo narrativo, apoyos visuales y un acabado coherente con tu canal.</p><span class="tool-tag">Adobe Premiere Pro</span></article>
+        <article class="glass-panel"><span class="service-number">02 / CONTENIDO SOCIAL</span><h3>Directo a lo importante.</h3><p>Edición vertical, subtítulos legibles, música y cortes que acompañan el mensaje. Contenido adaptado a Reels, TikTok y Shorts.</p><span class="tool-tag">CapCut</span></article>
+        <article class="glass-panel"><span class="service-number">03 / MARCAS</span><h3>Tu identidad, en movimiento.</h3><p>Piezas que mantienen una misma dirección visual. Definimos referencias, tono y formatos para que cada vídeo se sienta parte de tu marca.</p><span class="tool-tag">Un criterio visual compartido</span></article>
       </div>
     </section>
 
-    <!-- Bloque de Conversión Final (CTA) Mejorado -->
-    <section class="conversion-box">
-      <h3>¿Quieres que tus próximos vídeos retengan más y conviertan mejor?</h3>
-      <p>Hablemos directamente sobre tu canal y descubre cómo optimizar la edición de tu contenido para escalar métricas.</p>
-      <a href="https://wa.me/34643105522?text=Hola%20Sergio,%20he%20visto%20tu%20portfolio%20y%20quiero%20mejorar%20la%20edición%20de%20mi%20contenido." target="_blank" rel="noopener" class="btn-primary">Hablemos por WhatsApp ↗</a>
+    <section class="edit-process container" id="proceso" aria-labelledby="process-title">
+      <div class="section-heading"><div><p class="eyebrow">03 / FÁCIL DESDE EL PRIMER MENSAJE</p><h2 id="process-title">Tú creas.<br><span class="accent">Yo cuido la edición.</span></h2></div></div>
+      <ol class="process-grid"><li><span>01 —</span><h3>Te escucho</h3><p>Me cuentas qué haces, para quién y qué quieres conseguir. Vemos tu material y tus referencias.</p></li><li><span>02 —</span><h3>Lo definimos</h3><p>Acordamos formatos, alcance, presupuesto, plazos y revisiones antes de empezar.</p></li><li><span>03 —</span><h3>Le damos forma</h3><p>Preparo una primera versión y recogemos tu feedback para afinar el resultado.</p></li><li><span>04 —</span><h3>Listo para publicar</h3><p>Recibes las piezas en los formatos acordados, preparadas para tus canales.</p></li></ol>
     </section>
+
+    <section class="edit-faq container" aria-labelledby="faq-title"><div class="faq-grid"><div><p class="eyebrow">ANTES DE EMPEZAR</p><h2 id="faq-title">Las cosas claras.</h2><p>Una buena colaboración empieza sabiendo qué esperar.</p></div><div class="faq-list"><details><summary>¿Qué necesitas para darme un presupuesto?</summary><p>El tipo de vídeo, la duración aproximada del material y de la pieza final, una referencia de estilo y la fecha que tienes en mente. Con eso podemos concretar el alcance.</p></details><details><summary>¿Podemos trabajar de forma recurrente?</summary><p>Sí. Podemos plantear vídeos puntuales o un calendario de contenido, ajustando el volumen y las entregas a lo que necesitas.</p></details><details><summary>¿Puedo pedir cambios?</summary><p>Acordamos las rondas de revisión en la propuesta. Tendrás un punto de revisión para compartir tus comentarios sobre la edición.</p></details><details><summary>¿Qué programa utilizas?</summary><p>Adobe Premiere Pro para proyectos complejos y CapCut para contenido social. Elijo el flujo de trabajo según las necesidades de cada pieza.</p></details></div></div></section>
+
+    <section class="edit-contact container" id="contacto" aria-labelledby="contact-title"><div class="edit-contact-panel"><div><p class="eyebrow">TU PRÓXIMO VÍDEO EMPIEZA AQUÍ</p><h2 id="contact-title">Tienes algo que contar.<br><span>Hagamos que se vea.</span></h2><p>Envíame tu idea, una referencia y la fecha que tienes en mente. Te responderé con el siguiente paso para valorar tu proyecto.</p><a class="button button-dark" href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20he%20visto%20tu%20portfolio%20de%20edici%C3%B3n.%20Quiero%20un%20v%C3%ADdeo%20para%3A%20%0AReferencia%20de%20estilo%3A%20%0AFecha%20prevista%3A%20" target="_blank" rel="noopener noreferrer">Hablemos por WhatsApp <span aria-hidden="true">↗</span></a><small>Contacto directo conmigo. Sin compromiso.</small></div><div class="editor-signature"><img src="assets/Yo.jpg" width="768" height="1376" alt="Sergio, editor de vídeo" loading="lazy"><span>Sergio<small>Tu editor. De principio a fin.</small></span></div></div></section>
   </main>
-
-  <!-- Botón flotante de WhatsApp -->
-  <a href="https://wa.me/34643105522?text=Hola%20Sergio,%20estoy%20interesado%20en%20tus%20servicios%20de%20edición." target="_blank" rel="noopener" aria-label="WhatsApp" class="whatsapp-float">
-    <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-  </a>
-
-  <!-- Script para el funcionamiento del menú hamburguesa -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const mainNav = document.querySelector('.main-nav');
-
-      if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const isOpen = mainNav.classList.toggle('is-open');
-          menuToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-            mainNav.classList.remove('is-open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          }
-        });
-
-        mainNav.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            mainNav.classList.remove('is-open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-    });
-  </script>
-  <script src="assets/portfolio.js?v=20260916-audio" defer></script>
+  <footer class="site-footer container"><a class="wordmark" href="index.html" aria-label="Sergio, portfolio principal">sergio<span aria-hidden="true">✳</span></a><p>Edición con intención. © <span id="year">2026</span> Sergio.</p><div class="footer-links"><a href="index.html">Estrategia y proyectos ↗</a><a href="https://www.instagram.com/sergio.creator" target="_blank" rel="noopener noreferrer">Instagram ↗</a><a href="#contenido">Volver arriba ↑</a></div></footer>
 </body>
 </html>
