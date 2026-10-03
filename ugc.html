@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistema UGC para creadoras que quieren marcas, no likes</title>
+<style>
+:root{
+  --bg:#080806;
+  --bg2:rgba(25, 27, 21, 0.65);
+  --bg3:rgba(35, 38, 30, 0.8);
+  --tx:#f4f5f0;
+  --mu:#9a9d8f;
+  --ac:#c6f432;
+  --on:#0c0e07;
+  --ln:rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(16px);
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px)
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#f2f4ec;
+    --bg2:rgba(255, 255, 255, 0.75);
+    --bg3:rgba(240, 243, 233, 0.9);
+    --tx:#12140e;
+    --mu:#5c604f;
+    --ac:#4f6b00;
+    --on:#fff;
+    --ln:rgba(0, 0, 0, 0.06);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f2f4ec;
+  --bg2:rgba(255, 255, 255, 0.75);
+  --bg3:rgba(240, 243, 233, 0.9);
+  --tx:#12140e;
+  --mu:#5c604f;
+  --ac:#4f6b00;
+  --on:#fff;
+  --ln:rgba(0, 0, 0, 0.06);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--tx);
+  font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:-0.01em;
+}
+.w{max-width:920px;margin:0 auto;padding:0 24px}
+section{padding:72px 0;border-top:1px solid var(--ln)}
+h1,h2,h3{line-height:1.08;margin:0 0 16px;letter-spacing:-.03em}
+h1{font-size:clamp(2.2rem, 6.2vw, 3.6rem);font-weight:800}
+h2{font-size:clamp(1.8rem, 4vw, 2.4rem);font-weight:750}
+h3{font-size:1.15rem;font-weight:700}
+p{margin:0 0 16px;max-width:60ch}
+.mu{color:var(--mu)}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--ac);
+  color:var(--on);
+  font-weight:700;
+  padding:16px 28px;
+  border-radius:14px;
+  text-decoration:none;
+  font-size:1.05rem;
+  transition:transform 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 20px rgba(198, 244, 50, 0.15);
+}
+.btn:hover{transform:translateY(-1px);opacity:0.95}
+.btn:focus-visible,summary:focus-visible{outline:3px solid var(--tx);outline-offset:3px}
+
+.sub{font-size:.9rem;color:var(--mu);margin-top:14px}
+.hero{padding:48px 0 64px;border:0}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;font-weight:700}
+.nav span{letter-spacing:-0.02em}
+.nav a{color:var(--ac);text-decoration:none;font-size:.95rem;padding:8px 14px;background:var(--bg2);border:1px solid var(--ln);border-radius:20px;backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur)}
+
+/* Estética Apple Cards (Glassmorphism) */
+.box, .pk, .item, ol li, .profile-card {
+  background: var(--bg2);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--ln);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg2);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--ln);
+  padding: 6px 16px 6px 6px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  color: var(--tx);
+  font-weight: 500;
+}
+.hero-badge img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--ac);
+}
+
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
+.stat{background:var(--bg2);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--ln);border-radius:16px;padding:20px}
+.stat b{display:block;font-size:2rem;line-height:1;color:var(--tx);letter-spacing:-0.03em}
+.stat span{font-size:.85rem;color:var(--mu);margin-top:6px;display:block}
+
+.two{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin-top:24px}
+.box h3{margin-bottom:8px}
+
+.list{display:grid;gap:16px;margin-top:24px}
+.item{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:24px;align-items:start}
+.item i{font-style:normal;color:var(--ac);font-weight:800;font-size:1.2rem;background:var(--bg3);width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:10px}
+.item p{margin:6px 0 0;color:var(--mu)}
+
+ol{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:16px;counter-reset:s}
+ol li{counter-increment:s;padding:22px 24px 22px 72px;position:relative}
+ol li:before{content:counter(s);position:absolute;left:24px;top:22px;width:32px;height:32px;border-radius:50%;background:var(--ac);color:var(--on);font-weight:800;display:grid;place-items:center;font-size:.9rem}
+ol li b{display:block;font-size:1.05rem;margin-bottom:4px}
+ol li span{color:var(--mu);font-size:.95rem}
+
+details{background:var(--bg2);backdrop-filter:var(--glass-blur);-webkit-backdrop-filter:var(--glass-blur);border:1px solid var(--ln);border-radius:16px;padding:20px 24px;margin-bottom:12px;transition:background 0.2s ease}
+details[open]{background:var(--bg3)}
+summary{cursor:pointer;font-weight:650;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.3rem;color:var(--ac);font-weight:400;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin:12px 0 0;color:var(--mu)}
+
+.packs{display:grid;gap:20px;grid-template-columns:1fr 1fr;margin-top:24px}
+.pk{position:relative;display:flex;flex-direction:column}
+.pk.hl{border:2px solid var(--ac);background:var(--bg3)}
+.pk .badge{position:absolute;top:-12px;right:24px;background:var(--ac);color:var(--on);font-size:0.75rem;font-weight:800;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:0.05em}
+.pk .tag{color:var(--ac);font-weight:700;font-size:.85rem;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em}
+.pk ul{padding:0;margin:16px 0 24px;list-style:none;display:grid;gap:12px;flex:1}
+.pk li{padding-left:24px;position:relative;color:var(--mu);font-size:.95rem}
+.pk li b{color:var(--tx)}
+.pk li:before{content:"✓";position:absolute;left:0;color:var(--ac);font-weight:800}
+.pk .btn{text-align:center;width:100%}
+
+/* Sección de Vídeos Testimonios */
+.videos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 24px;
+}
+.video-card {
+  background: var(--bg2);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--ln);
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9/16;
+  max-height: 460px;
+  background: #000;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-info h4 {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+.video-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--mu);
+}
+
+/* Bloque Sobre Mí Dual */
+.profile-box {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+.profile-card {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 20px;
+  align-items: center;
+  background: var(--bg2);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--ln);
+  border-radius: 20px;
+  padding: 24px;
+}
+.profile-img-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--ac);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  flex-shrink: 0;
+}
+.profile-img-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-content h3 {
+  margin-bottom: 6px;
+  font-size: 1.2rem;
+}
+.profile-content p {
+  margin: 0;
+  color: var(--mu);
+  font-size: 0.92rem;
+}
+
+.cta{text-align:center;padding:80px 0}
+.cta p{margin-left:auto;margin-right:auto}
+
+footer{padding:32px 0;color:var(--mu);font-size:.85rem;border-top:1px solid var(--ln);text-align:center}
+
+/* CTA Flotante en Móviles para CRO ultra-optimizado */
+.floating-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg3);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-top: 1px solid var(--ln);
+  padding: 14px 20px;
+  z-index: 100;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.2);
+}
+.floating-cta .btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+}
+
+@media(max-width:768px){
+  .two,.packs,.videos-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr;gap:12px}
+  .profile-card{grid-template-columns:1fr;text-align:center;justify-items:center;padding:24px}
+  .profile-img-container{width:100px;height:100px}
+  .floating-cta{display:block}
+  body{padding-bottom:76px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="w">
+<div class="nav">
+  <span>sergio.creator</span>
+  <a href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20quiero%20info%20sobre%20el%20sistema%20UGC" target="_blank" rel="noopener">WhatsApp Directo</a>
+</div>
+
+<header class="hero">
+  <div class="hero-badge">
+    <img src="assets/guillemojeda.png" alt="Guillem Ojeda">
+    <span>Experiencia con Guillem Ojeda <b>(+12M seguidores)</b></span>
+  </div>
+<h1>Construye un sistema UGC que atraiga marcas de calidad y rompe tu límite de facturación.</h1>
+<p class="mu" style="font-size:1.15rem">Olvídate de mandar mensajes a ciegas y de quemarte creando contenido sin rumbo. Diseñamos tu web de alta conversión, optimizamos tu producción en una sola sesión y te damos la estrategia exacta para cerrar marcas que pagan lo que vales. Tanto si empiezas de cero como si buscas escalar.</p>
+<a class="btn" href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20quiero%20info%20sobre%20el%20sistema%20UGC" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+<p class="sub">Primera conversación por WhatsApp, sin compromiso. Te digo con sinceridad si encajas.</p>
+<div class="stats">
+<div class="stat"><b>12M+</b><span>seguidores en proyectos con creadores top</span></div>
+<div class="stat"><b>545K</b><span>seguidores propios desde cero, orgánico</span></div>
+<div class="stat"><b>8+ años</b><span>en desarrollo web y optimización CRO</span></div>
+</div>
+</header>
+
+<section>
+<h2>El problema no es tu talento. Es tu sistema.</h2>
+<div class="two">
+<div class="box">
+  <h3>Si nunca has hecho UGC</h3>
+  <p class="mu">No sabes qué enseñar, cómo presentarte ni a quién escribir. Sin portfolio, las marcas no tienen por qué arriesgarse contigo.</p>
+</div>
+<div class="box">
+  <h3>Si ya haces UGC</h3>
+  <p class="mu">Dependes de que una marca te escriba, grabas cada pieza por separado, tu portfolio es un Drive o un enlace en la bio y negocias sin autoridad.</p>
+</div>
+</div>
+<p style="margin-top:24px">En ambos casos pasa lo mismo: <b>las marcas deciden en segundos</b>. Si tu presencia no genera confianza al instante, pierdes el trabajo antes de enseñar tu vídeo.</p>
+</section>
+
+<section>
+<h2>Lo que te doy y no vas a encontrar junto en otro sitio</h2>
+<p class="mu">La mayoría de agencias te venden humo o gestión genérica. Los diseñadores te hacen una web bonita pero vacía. Yo combino estrategia, contenido y tecnología.</p>
+
+<div class="two" style="margin-top: 24px;">
+  <div class="box" style="opacity: 0.85;">
+    <h3 style="color: var(--mu); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">Lo que hacen otros</h3>
+    <ul style="padding: 0; margin: 0; list-style: none; display: grid; gap: 14px; font-size: 0.95rem; color: var(--mu);">
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: #ff5c5c; font-weight: 800;">✕</span> Plantillas web genéricas sin foco en conversión.</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: #ff5c5c; font-weight: 800;">✕</span> Creación de contenido aislada (pieza a pieza y sin sistema).</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: #ff5c5c; font-weight: 800;">✕</span> Cero acompañamiento técnico ni visión de negocio.</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: #ff5c5c; font-weight: 800;">✕</span> Te dicen que esperes o pagues anuncios en frío.</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: #ff5c5c; font-weight: 800;">✕</span> Equipos que rotan sin experiencia real en audiencias.</li>
+    </ul>
+  </div>
+
+  <div class="box hl" style="background: var(--bg3); border: 2px solid var(--ac);">
+    <h3 style="color: var(--ac); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 16px;">El Sistema Conmigo</h3>
+    <ul style="padding: 0; margin: 0; list-style: none; display: grid; gap: 14px; font-size: 0.95rem;">
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: var(--ac); font-weight: 800;">✓</span> <b>Web CRO:</b> Diseñada para que la marca confíe y te escriba.</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: var(--ac); font-weight: 800;">✓</span> <b>Sala de creación:</b> Graba 15 a 35 piezas en una sola sesión.</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: var(--ac); font-weight: 800;">✓</span> <b>Edición profesional a cargo:</b> Me encargo personalmente de pulir cada vídeo.</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: var(--ac); font-weight: 800;">✓</span> <b>Prospección activa:</b> Análisis en vídeo personalizados a marcas.</li>
+      <li style="padding-left: 22px; position: relative;"><span style="position: absolute; left: 0; color: var(--ac); font-weight: 800;">✓</span> <b>Mentor directo:</b> Experiencia validada con creadores top.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Qué incluye</h2>
+<div class="list">
+<div class="item"><i>+</i><div><h3>Portfolio web de alta conversión</h3><p>Una página tuya, rápida, con tu nicho, tus piezas y un solo camino claro: que la marca te contacte. Sin fricción, sin menús que distraigan.</p></div></div>
+<div class="item"><i>+</i><div><h3>Sala de creación: un día, semanas de contenido</h3><p>Convertimos tu estrategia en 15 a 35 reels que grabas en una sola sesión. Dejas de empezar de cero cada día.</p></div></div>
+<div class="item"><i>+</i><div><h3>Guiones, ganchos y edición profesional</h3><p>Me encargo personalmente de la dirección de los ganchos, el ritmo y la edición completa de tus vídeos para asegurar que transmitan máxima calidad y retención.</p></div></div>
+<div class="item"><i>+</i><div><h3>Prospección quirúrgica</h3><p>En vez de mensajes masivos, analizamos la web o el funnel de una marca concreta y le mandamos un vídeo con mejoras reales. Llegas aportando valor desde el primer contacto.</p></div></div>
+</div>
+</section>
+
+<section>
+<h2>Así trabajamos</h2>
+<ol>
+<li><b>Diagnóstico</b><span>Vemos dónde estás: sin experiencia o con ella, tu nicho y qué marcas encajan.</span></li>
+<li><b>Posicionamiento y portfolio</b><span>Definimos qué te hace elegible y montamos tu web con la conversión como único objetivo.</span></li>
+<li><b>Sesión de grabación y edición</b><span>Grabas en volumen y me encargo de la postproducción profesional de cada pieza.</span></li>
+<li><b>Salida a marcas</b><span>Prospección con análisis en vídeo y Build in Public para construir autoridad sin ads.</span></li>
+</ol>
+</section>
+
+<section id="packs">
+<h2>Elige tu pack</h2>
+<p class="mu">Dos caminos, según el punto en el que estés. Si dudas cuál es el tuyo, te lo digo yo por WhatsApp.</p>
+<div class="packs">
+<div class="pk">
+  <div class="tag">Para empezar desde cero</div>
+  <h3>Pack Arranque</h3>
+  <p class="mu">Para quien nunca ha hecho UGC y necesita una base sólida para presentarse a marcas.</p>
+  <ul>
+    <li><b>Diagnóstico y posicionamiento</b> de tu nicho</li>
+    <li><b>Portfolio web</b> de alta conversión</li>
+    <li><b>Guiones y ganchos</b> optimizados</li>
+    <li><b>Edición profesional</b> de tus primeras piezas</li>
+  </ul>
+  <a class="btn" href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20quiero%20info%20sobre%20el%20Pack%20Arranque%20UGC" target="_blank" rel="noopener">Quiero el Pack Arranque</a>
+</div>
+<div class="pk hl">
+  <div class="badge">Más elegido</div>
+  <div class="tag">Para creadoras con experiencia</div>
+  <h3>Pack Escala</h3>
+  <p class="mu">Para quien ya hace UGC y quiere producir más rápido y conseguir marcas de forma activa.</p>
+  <ul>
+    <li>Todo lo del Pack Arranque incluido</li>
+    <li><b>Sala de creación:</b> 15 a 35 piezas por sesión</li>
+    <li><b>Edición y postproducción</b> experta incluida</li>
+    <li><b>Prospección quirúrgica</b> con análisis en vídeo</li>
+    <li>Estrategia y acompañamiento continuo</li>
+  </ul>
+  <a class="btn" href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20quiero%20info%20sobre%20el%20Pack%20Escala%20UGC" target="_blank" rel="noopener">Quiero el Pack Escala</a>
+</div>
+</div>
+</section>
+
+<section>
+<h2>Prueba real: El caso AcroGravity</h2>
+<p>Un proyecto de acrobacias y clases en Peñíscola. Con una landing optimizada y estrategia orgánica, el interés se convirtió en alumnos recurrentes <b>desde el primer mes</b>, sin invertir un solo euro en anuncios.</p>
+<p class="mu">Es exactamente el mismo enfoque y nivel de conversión que aplico para posicionar tu marca personal.</p>
+
+<div class="videos-grid">
+  <div class="video-card">
+    <div class="video-container">
+      <video controls preload="metadata" playsinline>
+        <source src="assets/testimonio_bluegravity.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+    <div class="video-info">
+      <h4>BlueGravity</h4>
+      <p class="mu">Testimonio sobre el sistema y resultados obtenidos</p>
+    </div>
+  </div>
+
+  <div class="video-card">
+    <div class="video-container">
+      <video controls preload="metadata" playsinline>
+        <source src="assets/testimonio-marc.mp4" type="video/mp4">
+        Tu navegador no soporta la reproducción de video.
+      </video>
+    </div>
+    <div class="video-info">
+      <h4>Marc</h4>
+      <p class="mu">Experiencia con la metodología y el impacto en conversión</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2>Preguntas frecuentes</h2>
+<details><summary>¿Qué es exactamente el UGC y a quién va dirigido?</summary><p>UGC (User Generated Content) son vídeos comerciales o de recomendación creados por personas reales para marcas. Este sistema está enfocado a creadoras que quieren monetizar su talento colaborando profesionalmente con marcas, en lugar de depender de likes o redes sociales saturadas.</p></details>
+<details><summary>¿Y si no tengo ni idea de grabar ni editar?</summary><p>No te preocupes. Yo te marco la estrategia exacta, los guiones y los ganchos. Tú solo pones el talento frente a cámara y <b>yo me encargo personalmente de toda la edición profesional</b>. Con el tiempo, te enseñaré el método para que lo hagas tú misma si quieres ahorrar costes.</p></details>
+<details><summary>¿Esto es una agencia tradicional o un curso?</summary><p>Ninguna de las dos cosas. Es un acompañamiento directo y personalizado de la mano de un creador con experiencia trabajando con canales top de más de 12M de seguidores. Montamos tu infraestructura real (web + contenido + prospección) para que cierres marcas.</p></details>
+<details><summary>¿Cuánto cuesta y cómo funciona?</summary><p>Trabajamos mediante packs a medida (Arranque o Escala) según tu punto de partida. Escríbeme por WhatsApp sin compromiso, estudiamos tu caso y te doy una propuesta clara y sin sorpresas.</p></details>
+<details><summary>¿Tengo que invertir en publicidad o anuncios?</summary><p>Absolutamente no. Todo el sistema se basa en autoridad orgánica, estrategias de conversión web y prospección directa a marcas, invirtiendo 0€ en pauta publicitaria.</p></details>
+</section>
+
+<!-- Sección Sobre Mí con foto y Guillem Ojeda -->
+<section>
+<h2>¿Quién está detrás de esto?</h2>
+<p class="mu">No te vende teoría una agencia anónima. Te acompaña alguien que vive de crear contenido y construir tecnología al más alto nivel.</p>
+<div class="profile-box">
+  
+  <div class="profile-card">
+    <div class="profile-img-container">
+      <img src="assets/Yo.jpg" alt="Sergio - Creador y Estratega CRO">
+    </div>
+    <div class="profile-content">
+      <h3>Sergio</h3>
+      <p>Creador con <b>545K seguidores</b> propios construidos de forma orgánica y más de <b>8 años de experiencia</b> en desarrollo web, optimización CRO y automatizaciones.</p>
+    </div>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-img-container">
+      <img src="assets/guillemojeda.png" alt="Guillem Ojeda">
+    </div>
+    <div class="profile-content">
+      <h3>Experiencia con Guillem Ojeda</h3>
+      <p>He trabajado para el creador e influencer <b>Guillem Ojeda</b>, sumando más de <b>12 millones de seguidores</b> en redes sociales y aportando visión de élite en la creación de contenido.</p>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<section class="cta" id="contacto">
+<h2>Tu próxima marca no va a buscarte si no tienes un sitio donde mirar</h2>
+<p class="mu">Cuéntame en qué punto estás. Te respondo personalmente y te digo si podemos trabajar juntos.</p>
+<a class="btn" href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20quiero%20info%20sobre%20el%20sistema%20UGC" target="_blank" rel="noopener">Escríbeme por WhatsApp y empezamos</a>
+<p class="sub">Plazas limitadas para poder dedicarte atención real.</p>
+</section>
+
+<footer>sergio.creator · rojomoves</footer>
+</div>
+
+<!-- CTA Flotante para dispositivos móviles -->
+<div class="floating-cta">
+  <a class="btn" href="https://wa.me/34643105522?text=Hola%20Sergio%2C%20quiero%20info%20sobre%20el%20sistema%20UGC" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+</div>
+
+</body>
+</html>
