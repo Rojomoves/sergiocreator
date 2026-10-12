@@ -14,7 +14,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://sergiocreator.com/assets/og-image.png">
 
-<meta name="description" content="Responde 7 preguntas y recibe un plan de contenido a medida: edición, ganchos, ideas ganadoras, estrategia y acompañamiento 1:1.">
+<meta name="description" content="Responde 8 preguntas y recibe un plan de contenido a medida: edición, ganchos, ideas ganadoras, estrategia y acompañamiento 1:1.">
 <meta property="og:title" content="Tu Plan de Contenido — Sergio">
 <meta property="og:description" content="Un test de 1 minuto para descubrir qué plan de contenido necesita tu proyecto.">
 <meta property="og:type" content="website">
@@ -188,7 +188,7 @@ input[type=text],input[type=tel]{
   <input name="bot-field">
   <input name="nombre"><input name="instagram"><input name="whatsapp">
   <input name="tipo"><input name="punto_de_partida"><input name="objetivo"><input name="servicios">
-  <input name="videos_al_mes"><input name="empezar"><input name="plan_recomendado">
+  <input name="videos_al_mes"><input name="empezar"><input name="presupuesto_mensual"><input name="plan_recomendado">
   <input name="origen"><input name="pagina_origen"><input name="consentimiento">
 </form>
 
@@ -212,6 +212,7 @@ var GOALS={
   monetizar:'Monetizar mi contenido'
 };
 var WHENS={ya:'Esta semana',mes:'Este mes',mirar:'Solo estoy mirando opciones'};
+var BUDGETS={m300:'Menos de 300 €/mes',m500:'Entre 300 € y 500 €/mes',m800:'Entre 500 € y 800 €/mes',mas:'Más de 800 €/mes',hablar:'Prefiero hablarlo contigo'};
 var VIDS={4:'4 al mes',8:'8 al mes',12:'12 al mes',16:'16 al mes'};
 
 var SVC={
@@ -256,10 +257,11 @@ var STEPS=[
     ['4','Unos 4','Constancia sin agobios'],['8','Unos 8','Ritmo sólido'],
     ['12','Unos 12','Crecimiento rápido'],['16','Unos 16','A pleno rendimiento']]},
   {k:'when',t:'¿Cuándo quieres empezar?',s:'Para saber cuánto debo priorizar tu caso.',o:mapOpts(WHENS)},
+  {k:'budget',t:'¿Qué inversión mensual te encajaría para empezar?',s:'Solo para orientar tu propuesta. No es un compromiso.',o:mapOpts(BUDGETS)},
   {k:'contact',t:'¿Dónde te envío tu plan?',s:'Así puedo escribirte aunque cierres esta página.',contact:true}
 ];
 
-var A={type:'',start:'',goal:'',svc:[],videos:'',when:'',name:'',ig:'',tel:'',ok:false};
+var A={type:'',start:'',goal:'',svc:[],videos:'',when:'',budget:'',name:'',ig:'',tel:'',ok:false};
 var sent=false;
 var view='intro',idx=0,lock=false,timers=[];
 
@@ -281,7 +283,7 @@ function sendLead(){
     nombre:A.name.trim(),instagram:'@'+igClean(A.ig),whatsapp:A.tel.trim(),
     tipo:TYPES[A.type],punto_de_partida:STARTS[A.start],objetivo:GOALS[A.goal],
     servicios:A.svc.map(function(i){return SVC[i].n}).join(', '),videos_al_mes:A.videos,
-    empezar:WHENS[A.when],plan_recomendado:PACKS[p].n,origen:origin(),
+    empezar:WHENS[A.when],presupuesto_mensual:BUDGETS[A.budget],plan_recomendado:PACKS[p].n,origen:origin(),
     pagina_origen:document.referrer||'',consentimiento:'sí'
   };
   var body=Object.keys(data).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(data[k])}).join('&');
@@ -332,7 +334,7 @@ function introHTML(){
   return '<section class="card glass">'+
     '<p class="eyebrow">Test de 1 minuto</p>'+
     '<h1>¿Qué plan de contenido necesita tu proyecto?</h1>'+
-    '<p class="lead">Responde 7 preguntas y te preparo un plan con edición, ganchos, ideas ganadoras, estrategia y acompañamiento 1:1 pensado para ti.</p>'+
+    '<p class="lead">Responde 8 preguntas y te preparo un plan con edición, ganchos, ideas ganadoras, estrategia y acompañamiento 1:1 pensado para ti.</p>'+
     '<button class="btn" type="button" data-act="start">Empezar mi plan</button>'+
     trust()+
     '</section>';
@@ -388,7 +390,7 @@ function waUrl(p){
   var s=A.svc.map(function(i){return SVC[i].n}).join(', ');
   var msg='Hola Sergio, soy '+A.name.trim()+'.\nHe hecho el test de tu plan de contenido:\n'+
     '- Soy: '+TYPES[A.type]+'\n- Punto de partida: '+STARTS[A.start]+'\n- Objetivo: '+GOALS[A.goal]+'\n'+
-    '- Quiero: '+s+'\n- Vídeos al mes: '+A.videos+'\n- Empezar: '+WHENS[A.when]+'\n- Instagram: @'+igClean(A.ig)+'\n'+(A.tel.trim()?'- WhatsApp: '+A.tel.trim()+'\n':'')+'- Origen: '+origin()+'\n'+
+    '- Quiero: '+s+'\n- Vídeos al mes: '+A.videos+'\n- Empezar: '+WHENS[A.when]+'\n- Presupuesto mensual: '+BUDGETS[A.budget]+'\n- Instagram: @'+igClean(A.ig)+'\n'+(A.tel.trim()?'- WhatsApp: '+A.tel.trim()+'\n':'')+'- Origen: '+origin()+'\n'+
     'Plan recomendado: '+PACKS[p].n+'\n¿Me preparas la propuesta con el presupuesto?';
   return 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
 }
@@ -433,7 +435,7 @@ $('stage').addEventListener('click',function(e){
   var act=b.getAttribute('data-act');
   if(act==='start'){go('step',0);return}
   if(act==='next'){if(!b.disabled)next();return}
-  if(act==='again'){A={type:'',start:'',goal:'',svc:[],videos:'',when:'',name:'',ig:'',tel:'',ok:false};sent=false;go('intro');return}
+  if(act==='again'){A={type:'',start:'',goal:'',svc:[],videos:'',when:'',budget:'',name:'',ig:'',tel:'',ok:false};sent=false;go('intro');return}
   if(act==='copy'){
     var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar número'},1800)};
     var fb=function(){b.textContent='Cópialo de aquí'};
