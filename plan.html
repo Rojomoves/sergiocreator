@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tu Plan de Contenido</title>
+<meta name="description" content="Responde 7 preguntas y recibe un plan de contenido a medida: edición, ganchos, ideas ganadoras, estrategia y acompañamiento 1:1.">
+<meta property="og:title" content="Tu Plan de Contenido — Sergio">
+<meta property="og:description" content="Un test de 1 minuto para descubrir qué plan de contenido necesita tu proyecto.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: una sola columna estrecha tipo móvil; una pregunta por pantalla dentro de una tarjeta de vidrio, barra de progreso arriba, cierre con barra fija hacia WhatsApp. */
+:root{
+  --f:"Sequel Sans","Sequel Sans Bold","Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --bg:#080806;
+  --glass:rgba(25,27,21,.62);
+  --glass2:rgba(38,42,31,.86);
+  --tx:#f4f5f0;
+  --mu:#a4a79a;
+  --ac:#c6f432;
+  --on:#0c0e07;
+  --ln:rgba(255,255,255,.11);
+  --soft:rgba(198,244,50,.13);
+  --glow:rgba(198,244,50,.18);
+  --shadow:rgba(0,0,0,.32);
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bg:#f2f4ec;--glass:rgba(255,255,255,.72);--glass2:rgba(255,255,255,.94);--tx:#12140e;--mu:#555a49;
+    --ac:#4f6b00;--on:#ffffff;--ln:rgba(0,0,0,.11);--soft:rgba(79,107,0,.12);--glow:rgba(120,160,0,.2);
+    --shadow:rgba(40,50,10,.14);color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#f2f4ec;--glass:rgba(255,255,255,.72);--glass2:rgba(255,255,255,.94);--tx:#12140e;--mu:#555a49;
+  --ac:#4f6b00;--on:#ffffff;--ln:rgba(0,0,0,.11);--soft:rgba(79,107,0,.12);--glow:rgba(120,160,0,.2);
+  --shadow:rgba(40,50,10,.14);color-scheme:light;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--tx);font:500 16px/1.55 var(--f);letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;padding-inline:16px;padding-block:0 40px;position:relative;isolation:isolate;
+}
+body.has-bar{padding-block:0 120px}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(55vmax 38vmax at 90% -8%,var(--glow),transparent 62%),
+    radial-gradient(48vmax 36vmax at -10% 52%,var(--glow),transparent 62%),
+    radial-gradient(40vmax 30vmax at 75% 108%,var(--glow),transparent 62%);
+}
+.shell{max-width:560px;margin:0 auto;display:grid;gap:18px}
+h1,h2,h3{margin:0;line-height:1.08;letter-spacing:-.035em;text-wrap:balance}
+h1{font-size:clamp(2rem,8vw,2.9rem);font-weight:800}
+h2{font-size:clamp(1.55rem,6vw,2.1rem);font-weight:800}
+h3{font-size:1.05rem;font-weight:800}
+p{margin:0}
+.mu{color:var(--mu)}
+:focus-visible{outline:3px solid var(--tx);outline-offset:3px}
+.glass{
+  background:var(--glass);backdrop-filter:blur(18px) saturate(1.2);-webkit-backdrop-filter:blur(18px) saturate(1.2);
+  border:1px solid var(--ln);border-radius:24px;box-shadow:0 16px 48px var(--shadow);
+}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:18px 0}
+.brand{font-weight:800;letter-spacing:-.03em;font-size:1.05rem}
+.back{
+  font:inherit;font-weight:700;font-size:.9rem;color:var(--mu);background:none;border:0;cursor:pointer;padding:8px 4px;
+}
+.back[hidden]{display:none}
+.prog{height:6px;border-radius:6px;background:var(--ln);overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--ac);border-radius:6px;transition:width .35s ease}
+
+.card{padding:28px 22px;display:grid;gap:20px;animation:rise .35s ease}
+@keyframes rise{from{transform:translateY(10px)}to{transform:none}}
+.eyebrow{color:var(--ac);font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
+.lead{font-size:1.08rem;color:var(--mu)}
+.trust{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--mu);font-size:.9rem}
+.trust b{color:var(--tx);font-size:1rem;margin-right:4px}
+.verify{font-size:.85rem;color:var(--mu);display:flex;flex-wrap:wrap;gap:2px 14px}
+.fl .lt{display:block}
+.verify a{color:var(--tx);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+.opts{display:grid;gap:10px}
+.opt{
+  display:flex;gap:14px;align-items:center;text-align:left;width:100%;padding:16px 18px;border-radius:16px;
+  border:1px solid var(--ln);background:var(--glass);color:var(--tx);font:inherit;cursor:pointer;
+  transition:border-color .15s ease,background .15s ease;
+}
+.opt:hover{border-color:var(--ac)}
+.opt .tx{display:grid;gap:2px;flex:1;min-width:0}
+.opt b{font-weight:700}
+.opt small{color:var(--mu);font-weight:500;font-size:.86rem}
+.opt .mark{
+  flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--ln);display:grid;place-items:center;
+  font-size:.8rem;font-weight:800;color:transparent;
+}
+.opt.on{border-color:var(--ac);background:var(--soft)}
+.opt.on .mark{background:var(--ac);border-color:var(--ac);color:var(--on)}
+.opt .go{flex:none;color:var(--ac);font-weight:800}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;text-align:center;gap:8px;width:100%;
+  font:inherit;font-weight:800;font-size:1.05rem;color:var(--on);background:var(--ac);border:0;border-radius:16px;
+  padding:16px 22px;cursor:pointer;text-decoration:none;box-shadow:0 8px 26px var(--glow);
+}
+.btn[disabled]{opacity:.4;cursor:not-allowed;box-shadow:none}
+.btn.line{background:transparent;color:var(--tx);border:1px solid var(--ln);box-shadow:none}
+input[type=text],input[type=tel]{
+  font:inherit;font-size:1.1rem;color:var(--tx);background:var(--glass);border:1px solid var(--ln);border-radius:14px;
+  padding:16px;width:100%;min-width:0;
+}
+.note{font-size:.85rem;color:var(--mu);text-align:center}
+.fields{display:grid;gap:14px}
+.fl{display:grid;gap:6px;font-weight:700;font-size:.9rem;color:var(--mu)}
+.opt-tag{font-weight:500;font-size:.8rem;margin-left:6px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:.85rem;color:var(--mu);cursor:pointer}
+.consent input{width:20px;height:20px;flex:none;margin-top:2px;accent-color:var(--ac)}
+.consent a,.note a{color:var(--tx);text-decoration:underline;text-underline-offset:3px}
+.err{margin:0;font-size:.85rem;color:var(--tx);font-weight:700}
+
+/* Análisis */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.steps li{display:flex;gap:12px;align-items:center;color:var(--mu);transition:color .3s ease}
+.steps .dot{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--ln);display:grid;place-items:center;font-size:.8rem;font-weight:800;color:transparent}
+.steps li.done{color:var(--tx)}
+.steps li.done .dot{background:var(--ac);border-color:var(--ac);color:var(--on)}
+
+/* Resultado */
+.res{display:grid;gap:18px}
+.plan{padding:24px 22px;display:grid;gap:12px;border:1.5px solid var(--ac);box-shadow:0 24px 70px var(--glow),0 14px 44px var(--shadow)}
+.plan .name{font-size:clamp(2.2rem,9vw,3rem);font-weight:800;letter-spacing:-.045em;line-height:1}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:.82rem;font-weight:700;padding:5px 12px;border-radius:20px;background:var(--soft);color:var(--ac)}
+.blk{padding:22px;display:grid;gap:12px}
+.list{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.list li{position:relative;padding-left:26px;line-height:1.35}
+.list li::before{content:"✓";position:absolute;left:0;color:var(--ac);font-weight:800}
+.list.plus li::before{content:"+"}
+.list li span{display:block;color:var(--mu);font-size:.86rem}
+.next{padding:24px 22px;display:grid;gap:14px;border:1.5px solid var(--ac);background:var(--glass2)}
+.next .meter{display:grid;gap:6px}
+.next .meter .prog{height:8px}
+.numline{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;font-weight:700}
+.numline button{font:inherit;font-weight:700;font-size:.85rem;color:var(--tx);background:var(--glass);border:1px solid var(--ln);border-radius:10px;padding:6px 12px;cursor:pointer}
+.again{background:none;border:0;color:var(--mu);font:inherit;font-weight:600;text-decoration:underline;cursor:pointer;justify-self:center;padding:6px}
+
+.bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--glass2);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid var(--ln);
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+}
+.bar-in{max-width:560px;margin:0 auto}
+.bar[hidden]{display:none}
+@media (prefers-reduced-motion:reduce){.card{animation:none}.prog i{transition:none}}
+</style>
+<style>[hidden]{display:none!important}img{max-width:100%}</style>
+</head>
+<body>
+<div class="shell">
+  <div class="top">
+    <div class="brand">sergio.creator</div>
+    <button class="back" id="back" type="button" hidden>← Atrás</button>
+  </div>
+  <div class="prog" id="prog" aria-hidden="true"><i id="prog-i"></i></div>
+  <main id="stage" aria-live="polite"></main>
+</div>
+
+<form name="plan-contenido" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="hidden" name="form-name" value="plan-contenido">
+  <input name="bot-field">
+  <input name="nombre"><input name="instagram"><input name="whatsapp">
+  <input name="tipo"><input name="punto_de_partida"><input name="objetivo"><input name="servicios">
+  <input name="videos_al_mes"><input name="empezar"><input name="plan_recomendado">
+  <input name="origen"><input name="pagina_origen"><input name="consentimiento">
+</form>
+
+<div class="bar" id="bar" hidden>
+  <div class="bar-in"><a class="btn" id="wa-bar" href="#" target="_blank" rel="noopener">Pedir mi presupuesto por WhatsApp</a></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+var WA='34643105522',WA_SHOW='+34 643 105 522';
+
+var TYPES={creador:'Creador de contenido',marca:'Marca personal',local:'Negocio local'};
+var STARTS={cero:'Empiezo desde cero',publica:'Publico, pero sin sistema',escala:'Quiero escalar lo que ya funciona'};
+var GOALS={
+  alcance:'Más alcance y seguidores',
+  ventas:'Más clientes y ventas',
+  constancia:'Contenido constante sin agobios',
+  marca:'Una marca personal reconocible',
+  monetizar:'Monetizar mi contenido'
+};
+var WHENS={ya:'Esta semana',mes:'Este mes',mirar:'Solo estoy mirando opciones'};
+var VIDS={4:'4 al mes',8:'8 al mes',12:'12 al mes',16:'16 al mes'};
+
+var SVC={
+  edit:{n:'Edición profesional de vídeo',d:'Cada pieza pulida para retener'},
+  hook:{n:'Ganchos que enganchan',d:'Los primeros segundos deciden todo'},
+  ideas:{n:'Ideas ganadoras',d:'Temas con potencial real, no al azar'},
+  calls:{n:'Acompañamiento 1:1 por videollamada',d:'Resolvemos tu caso en directo'},
+  script:{n:'Guiones completos',d:'Tú grabas, yo escribo'},
+  redirect:{n:'Redirección de contenido',d:'Reorientamos lo que ya publicas'},
+  strategy:{n:'Estrategia óptima',d:'Un plan claro y priorizado'},
+  cover:{n:'Portadas que invitan a pulsar',d:'La primera impresión de cada vídeo'},
+  metrics:{n:'Análisis de métricas',d:'Qué repetir y qué dejar atrás'}
+};
+var EXTRA_NAMES={
+  support:{n:'Soporte por WhatsApp entre llamadas',d:'Tus dudas, resueltas al momento'},
+  rush:{n:'Entrega prioritaria en 48 h',d:'Tus vídeos sin esperas'}
+};
+var PF={
+  1:['edit','hook','ideas','calls'],
+  2:['edit','hook','ideas','calls','script','redirect'],
+  3:['edit','hook','ideas','calls','script','redirect','cover','strategy','metrics','support','rush']
+};
+var PACKS={
+  1:{n:'Arranque',d:'La base para publicar con criterio y constancia.'},
+  2:{n:'Crecimiento',d:'Más dirección y acompañamiento para crecer con intención.'},
+  3:{n:'Escala',d:'El sistema completo: contenido, estrategia y acompañamiento sin dejar nada al azar.'}
+};
+var WHY={
+  cero:'Partes de cero, así que lo que más te acelera es tener ganchos, estrategia y a alguien a tu lado desde la primera semana.',
+  publica:'Ya publicas, así que lo que te falta no es más contenido sino dirección. Con una estrategia clara dejas de adivinar.',
+  escala:'Quieres escalar, así que necesitas métricas, entrega rápida y una estrategia para multiplicar lo que ya funciona.'
+};
+
+function mapOpts(o){return Object.keys(o).map(function(k){return [k,o[k]]})}
+var STEPS=[
+  {k:'type',t:'¿Qué eres?',s:'Así adapto el plan a tu caso.',o:mapOpts(TYPES)},
+  {k:'start',t:'¿En qué punto estás?',s:'Sin respuestas correctas, solo la tuya.',o:mapOpts(STARTS)},
+  {k:'goal',t:'¿Qué quieres conseguir primero?',s:'Elige lo que más pesa hoy.',o:mapOpts(GOALS)},
+  {k:'svc',t:'¿Qué quieres que incluya tu plan?',s:'Marca todo lo que te interese.',multi:true,
+    o:Object.keys(SVC).map(function(k){return [k,SVC[k].n,SVC[k].d]})},
+  {k:'videos',t:'¿Cuántos vídeos quieres al mes?',s:'Puedes ajustarlo después.',o:[
+    ['4','Unos 4','Constancia sin agobios'],['8','Unos 8','Ritmo sólido'],
+    ['12','Unos 12','Crecimiento rápido'],['16','Unos 16','A pleno rendimiento']]},
+  {k:'when',t:'¿Cuándo quieres empezar?',s:'Para saber cuánto debo priorizar tu caso.',o:mapOpts(WHENS)},
+  {k:'contact',t:'¿Dónde te envío tu plan?',s:'Así puedo escribirte aunque cierres esta página.',contact:true}
+];
+
+var A={type:'',start:'',goal:'',svc:[],videos:'',when:'',name:'',ig:'',tel:'',ok:false};
+var sent=false;
+var view='intro',idx=0,lock=false,timers=[];
+
+function $(id){return document.getElementById(id)}
+function esc(t){return String(t).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function clearTimers(){timers.forEach(clearTimeout);timers=[]}
+
+function igClean(v){return String(v).trim().replace(/^https?:\/\/(www\.)?instagram\.com\//i,'').replace(/^@+/,'').replace(/[\/?#].*$/,'').trim()}
+function igOk(v){return /^[A-Za-z0-9._]{1,30}$/.test(igClean(v))}
+function telOk(v){var s=String(v).trim();if(!s)return true;var d=s.replace(/\D/g,'');return d.length>=7&&d.length<=15}
+function contactOk(){return A.name.trim().length>0&&igOk(A.ig)&&telOk(A.tel)&&A.ok}
+function origin(){
+  try{var p=new URLSearchParams(location.search);return p.get('ref')||p.get('utm_source')||'directo'}catch(e){return 'directo'}
+}
+function sendLead(){
+  var p=reco();
+  var data={
+    'form-name':'plan-contenido','bot-field':'',
+    nombre:A.name.trim(),instagram:'@'+igClean(A.ig),whatsapp:A.tel.trim(),
+    tipo:TYPES[A.type],punto_de_partida:STARTS[A.start],objetivo:GOALS[A.goal],
+    servicios:A.svc.map(function(i){return SVC[i].n}).join(', '),videos_al_mes:A.videos,
+    empezar:WHENS[A.when],plan_recomendado:PACKS[p].n,origen:origin(),
+    pagina_origen:document.referrer||'',consentimiento:'sí'
+  };
+  var body=Object.keys(data).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(data[k])}).join('&');
+  try{
+    if(location.protocol!=='http:'&&location.protocol!=='https:')return;
+    fetch('/plan.html',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+      .then(function(r){sent=r.ok}).catch(function(){});
+  }catch(e){}
+}
+function submitContact(){
+  if(!contactOk())return;
+  A.ig=igClean(A.ig);
+  sendLead();
+  go('load');
+}
+
+function trust(){
+  return '<ul class="trust"><li><b>545K</b>seguidores en mi antigua marca personal, RojoMoves</li><li><b>+12M</b>seguidores en redes de los influencers con los que trabajo</li><li><b>+8 años</b>de experiencia en creación de contenido y webs</li></ul>'+
+    '<p class="verify">Compruébalo tú: <a href="https://www.instagram.com/rojomoves" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@rojoviral1" target="_blank" rel="noopener noreferrer">TikTok</a><a href="https://www.youtube.com/@rojomoves" target="_blank" rel="noopener noreferrer">YouTube</a></p>';
+}
+
+function setProgress(){
+  var p=0;
+  if(view==='step')p=10+(idx/STEPS.length)*80;
+  if(view==='load')p=94;
+  if(view==='result')p=100;
+  $('prog-i').style.width=p+'%';
+  $('prog').style.visibility=view==='intro'?'hidden':'visible';
+  $('back').hidden=view!=='step';
+}
+
+function draw(){
+  clearTimers();
+  var st=$('stage');
+  document.body.classList.toggle('has-bar',view==='result');
+  $('bar').hidden=view!=='result';
+  setProgress();
+  if(view==='intro')st.innerHTML=introHTML();
+  else if(view==='step')st.innerHTML=stepHTML();
+  else if(view==='load'){st.innerHTML=loadHTML();runLoad()}
+  else st.innerHTML=resultHTML();
+  if(view==='step'&&STEPS[idx].contact){var i=$('name');if(i){i.focus()}}
+}
+function go(v,i){view=v;if(i!==undefined)idx=i;lock=false;draw();try{window.scrollTo(0,0)}catch(e){}}
+
+function introHTML(){
+  return '<section class="card glass">'+
+    '<p class="eyebrow">Test de 1 minuto</p>'+
+    '<h1>¿Qué plan de contenido necesita tu proyecto?</h1>'+
+    '<p class="lead">Responde 7 preguntas y te preparo un plan con edición, ganchos, ideas ganadoras, estrategia y acompañamiento 1:1 pensado para ti.</p>'+
+    '<button class="btn" type="button" data-act="start">Empezar mi plan</button>'+
+    trust()+
+    '</section>';
+}
+function stepHTML(){
+  var S=STEPS[idx],h='<section class="card glass"><div><p class="eyebrow">Pregunta '+(idx+1)+' de '+STEPS.length+'</p><h2>'+esc(S.t)+'</h2>'+(S.s?'<p class="mu" style="margin-top:8px">'+esc(S.s)+'</p>':'')+'</div>';
+  if(S.contact){
+    h+='<div class="fields">'+
+      '<label class="fl" for="name">Tu nombre<input id="name" type="text" autocomplete="given-name" maxlength="40" placeholder="Ej. Laura" value="'+esc(A.name)+'"></label>'+
+      '<label class="fl" for="ig">Tu usuario de Instagram<input id="ig" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="40" placeholder="@tuusuario" value="'+esc(A.ig)+'"></label>'+
+      '<label class="fl" for="tel"><span class="lt">Tu WhatsApp <span class="opt-tag">opcional</span></span><input id="tel" type="tel" autocomplete="tel" maxlength="20" placeholder="+34 600 000 000" value="'+esc(A.tel)+'"></label>'+
+      '<label class="consent"><input id="ok" type="checkbox"'+(A.ok?' checked':'')+'><span>Acepto que Sergio use estos datos para contactarme por Instagram o WhatsApp sobre mi plan. <a href="privacidad.html" target="_blank" rel="noopener">Más información</a>.</span></label>'+
+      '<p class="err" id="err" role="alert" hidden></p>'+
+      '</div>'+
+      '<button class="btn" id="next" type="button" data-act="next"'+(contactOk()?'':' disabled')+'>Ver mi plan</button>';
+  }else{
+    h+='<div class="opts">';
+    S.o.forEach(function(o){
+      var on=S.multi?A.svc.indexOf(o[0])>-1:String(A[S.k])===String(o[0]);
+      h+='<button class="opt'+(on?' on':'')+'" type="button" data-opt="'+esc(o[0])+'"'+(S.multi?' aria-pressed="'+on+'"':'')+'>'+
+        (S.multi?'<span class="mark">✓</span>':'')+
+        '<span class="tx"><b>'+esc(o[1])+'</b>'+(o[2]?'<small>'+esc(o[2])+'</small>':'')+'</span>'+
+        (S.multi?'':'<span class="go">→</span>')+'</button>';
+    });
+    h+='</div>';
+    if(S.multi)h+='<button class="btn" id="next" type="button" data-act="next"'+(A.svc.length?'':' disabled')+'>Continuar</button>';
+  }
+  return h+'</section>';
+}
+function loadHTML(){
+  var t=TYPES[A.type]?TYPES[A.type].toLowerCase():'tu proyecto';
+  return '<section class="card glass"><div><p class="eyebrow">Un momento, '+esc(A.name.trim())+'</p><h2>Estoy armando tu plan</h2></div>'+
+    '<ul class="steps">'+
+    '<li><span class="dot">✓</span>Analizando tus respuestas</li>'+
+    '<li><span class="dot">✓</span>Eligiendo ganchos y estrategia para '+esc(t)+'</li>'+
+    '<li><span class="dot">✓</span>Ajustando el acompañamiento a tu ritmo</li>'+
+    '</ul></section>';
+}
+function runLoad(){
+  var lis=document.querySelectorAll('.steps li');
+  for(var i=0;i<lis.length;i++){(function(n){timers.push(setTimeout(function(){lis[n].classList.add('done')},500+n*750))})(i)}
+  timers.push(setTimeout(function(){go('result')},500+lis.length*750+200));
+}
+
+function reco(){
+  var s=A.svc,V=parseInt(A.videos,10)||0;
+  function has(list){return s.some(function(i){return list.indexOf(i)>-1})}
+  var n3=has(['strategy','cover','metrics'])||V>=12||A.start==='escala'||A.goal==='ventas'||A.goal==='monetizar'||A.when==='ya';
+  if(n3)return 3;
+  return (has(['script','redirect'])||V>=8)?2:1;
+}
+function waUrl(p){
+  var s=A.svc.map(function(i){return SVC[i].n}).join(', ');
+  var msg='Hola Sergio, soy '+A.name.trim()+'.\nHe hecho el test de tu plan de contenido:\n'+
+    '- Soy: '+TYPES[A.type]+'\n- Punto de partida: '+STARTS[A.start]+'\n- Objetivo: '+GOALS[A.goal]+'\n'+
+    '- Quiero: '+s+'\n- Vídeos al mes: '+A.videos+'\n- Empezar: '+WHENS[A.when]+'\n- Instagram: @'+igClean(A.ig)+'\n'+(A.tel.trim()?'- WhatsApp: '+A.tel.trim()+'\n':'')+'- Origen: '+origin()+'\n'+
+    'Plan recomendado: '+PACKS[p].n+'\n¿Me preparas la propuesta con el presupuesto?';
+  return 'https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+}
+function resultHTML(){
+  var p=reco(),P=PACKS[p],inc=PF[p],name=esc(A.name.trim());
+  var asked=A.svc.map(function(i){return '<li>'+esc(SVC[i].n)+'<span>'+esc(SVC[i].d)+'</span></li>'}).join('');
+  var extra=inc.filter(function(i){return A.svc.indexOf(i)<0}).map(function(i){
+    var o=SVC[i]||EXTRA_NAMES[i];return '<li>'+esc(o.n)+'<span>'+esc(o.d)+'</span></li>';
+  }).join('');
+  var url=waUrl(p);
+  $('wa-bar').href=url;
+  return '<div class="res">'+
+    '<section class="plan glass"><p class="eyebrow">Tu plan ideal, '+name+'</p>'+
+      '<div class="name">'+esc(P.n)+'</div>'+
+      '<p class="mu">'+esc(P.d)+'</p>'+
+      '<div class="pills"><span class="pill">'+esc(A.videos)+' vídeos al mes</span><span class="pill">'+esc(TYPES[A.type])+'</span><span class="pill">'+esc(GOALS[A.goal])+'</span></div>'+
+    '</section>'+
+    '<section class="blk glass"><h3>Por qué este plan</h3><p class="mu">'+esc(WHY[A.start])+'</p></section>'+
+    '<section class="blk glass"><h3>Lo que has pedido</h3><ul class="list">'+asked+'</ul></section>'+
+    (extra?'<section class="blk glass"><h3>Y además incluye</h3><ul class="list plus">'+extra+'</ul></section>':'')+
+    '<section class="next glass">'+
+      '<div class="meter"><b>Tu plan está al 90%</b><div class="prog" aria-hidden="true"><i style="width:90%"></i></div></div>'+
+      '<h2>Falta tu presupuesto personalizado</h2>'+
+      '<p class="mu">El precio exacto depende de tu caso. Hablamos por WhatsApp, lo repasamos juntos y te lo preparo con lo que me has contado. Te respondo personalmente y, si no encajamos, te lo digo con sinceridad.</p>'+
+      '<a class="btn" href="'+url+'" target="_blank" rel="noopener">Pedir mi presupuesto por WhatsApp</a>'+
+      '<div class="numline"><span>'+WA_SHOW+'</span><button type="button" data-act="copy">Copiar número</button></div>'+
+      (sent?'<p class="note">Si prefieres, también puedo escribirte yo por Instagram a @'+esc(igClean(A.ig))+'.</p>':'')+
+      (p<3?'<p class="note">Si quieres ir más lejos, en la conversación vemos también el nivel Escala.</p>':'')+
+      '<p class="note">Trabajo con pocos proyectos a la vez para dedicarte atención real. Uso tus datos solo para contactarte sobre tu plan. <a href="privacidad.html" target="_blank" rel="noopener">Privacidad</a>.</p>'+
+    '</section>'+
+    trust()+
+    '<button class="again" type="button" data-act="again">Empezar de nuevo</button>'+
+  '</div>';
+}
+
+function next(){
+  if(idx<STEPS.length-1)go('step',idx+1);else submitContact();
+}
+
+$('stage').addEventListener('click',function(e){
+  var b=e.target.closest('[data-act],[data-opt]');if(!b)return;
+  var act=b.getAttribute('data-act');
+  if(act==='start'){go('step',0);return}
+  if(act==='next'){if(!b.disabled)next();return}
+  if(act==='again'){A={type:'',start:'',goal:'',svc:[],videos:'',when:'',name:'',ig:'',tel:'',ok:false};sent=false;go('intro');return}
+  if(act==='copy'){
+    var done=function(){b.textContent='Copiado';setTimeout(function(){b.textContent='Copiar número'},1800)};
+    var fb=function(){b.textContent='Cópialo de aquí'};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(WA_SHOW).then(done,fb)}else fb();
+    return;
+  }
+  var v=b.getAttribute('data-opt');
+  if(v===null)return;
+  var S=STEPS[idx];
+  if(S.multi){
+    var i=A.svc.indexOf(v);if(i>-1)A.svc.splice(i,1);else A.svc.push(v);
+    var on=A.svc.indexOf(v)>-1;
+    b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);
+    var nx=$('next');if(nx)nx.disabled=!A.svc.length;
+  }else{
+    if(lock)return;lock=true;
+    A[S.k]=v;
+    var all=document.querySelectorAll('.opt');
+    for(var j=0;j<all.length;j++)all[j].classList.toggle('on',all[j]===b);
+    timers.push(setTimeout(next,220));
+  }
+});
+function syncContact(e){
+  var id=e.target.id;
+  if(id==='name')A.name=e.target.value;
+  else if(id==='ig')A.ig=e.target.value;
+  else if(id==='tel')A.tel=e.target.value;
+  else if(id==='ok')A.ok=e.target.checked;
+  else return;
+  var nx=$('next');if(nx)nx.disabled=!contactOk();
+  var er=$('err');
+  if(er){
+    var msg='';
+    if(A.ig.trim()&&!igOk(A.ig))msg='Tu usuario solo puede tener letras, números, puntos y guiones bajos, sin espacios.';
+    else if(!telOk(A.tel))msg='Revisa tu número de WhatsApp: incluye el prefijo del país.';
+    er.textContent=msg;er.hidden=!msg;
+  }
+}
+$('stage').addEventListener('input',syncContact);
+$('stage').addEventListener('change',syncContact);
+$('stage').addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&(e.target.id==='name'||e.target.id==='ig'||e.target.id==='tel')&&contactOk()){e.preventDefault();submitContact()}
+});
+$('back').addEventListener('click',function(){
+  if(idx>0)go('step',idx-1);else go('intro');
+});
+
+draw();
+})();
+</script>
+</body>
+</html>
