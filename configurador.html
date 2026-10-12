@@ -187,6 +187,11 @@ input[type=text],input[type=tel]{
 .sel li::before{content:"\2713";position:absolute;left:0;color:var(--ac);font-weight:800}
 .sel li span{display:block;color:var(--mu);font-size:.86rem}
 .opt-t{font-weight:500;font-size:.85rem;color:var(--mu)}
+.bar-flex{display:flex;gap:12px;align-items:center;justify-content:space-between}
+.bar-txt{display:grid;line-height:1.2;min-width:0}
+.bar-txt b{font-size:1rem}
+.bar-txt span{color:var(--mu);font-size:.82rem}
+.bar-btn{width:auto;flex:none;padding:14px 20px;font-size:1rem}
 </style>
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
 
@@ -202,6 +207,8 @@ input[type=text],input[type=tel]{
   <div class="prog" id="prog" aria-hidden="true"><i id="prog-i"></i></div>
   <main id="stage" aria-live="polite"></main>
 </div>
+
+<div class="bar" id="bar" hidden><div class="bar-in bar-flex"><div class="bar-txt"><b id="bar-pack"></b><span id="bar-sub"></span></div><button class="btn bar-btn" id="to-sum" type="button">Ver mi propuesta</button></div></div>
 
 <form name="configurador" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input type="hidden" name="form-name" value="configurador">
@@ -314,10 +321,14 @@ function svcHTML(id){
   return '<div class="svc"><button class="opt'+(on?' on':'')+'" type="button" data-svc="'+id+'" aria-pressed="'+on+'"><span class="mark">✓</span>'+
     '<span class="tx"><b>'+esc(f[0])+'</b><small>'+esc(f[1])+'</small></span></button>'+sub+'</div>';
 }
+function trust(){
+  return '<ul class="trust"><li><b>545K</b>seguidores en mi antigua marca personal, RojoMoves</li><li><b>+12M</b>seguidores en redes de los influencers con los que trabajo</li><li><b>+8 años</b>de experiencia en creación de contenido y webs</li></ul>'+
+    '<p class="verify">Compruébalo tú: <a href="https://www.instagram.com/rojomoves" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@rojoviral1" target="_blank" rel="noopener noreferrer">TikTok</a><a href="https://www.youtube.com/@rojomoves" target="_blank" rel="noopener noreferrer">YouTube</a></p>';
+}
 function buildHTML(){
   var h='<div class="res">'+
     '<section class="card glass"><div><p class="eyebrow">Tu propuesta a medida</p><h1>Monta lo que necesitas</h1>'+
-    '<p class="lead" style="margin-top:12px">Elige lo que quieras. Aquí no hay precios: te preparo una propuesta personal después de hablar contigo.</p></div></section>'+
+    '<p class="lead" style="margin-top:12px">Elige lo que quieras. Aquí no hay precios: te preparo una propuesta personal después de hablar contigo.</p></div>'+trust()+'</section>'+
     '<section class="sec glass"><h2>¿Cuántos vídeos al mes?</h2><div class="seg" id="vids">'+
     VIDEOS.map(function(n){return '<button type="button" class="chip'+(S.videos===n?' on':'')+'" data-vid="'+n+'">'+n+'</button>'}).join('')+'</div></section>'+
     '<section class="sec glass"><h2>¿Qué quieres incluir?</h2><div class="opts" id="svcs">'+ORDER.map(svcHTML).join('')+'</div></section>'+
@@ -326,7 +337,6 @@ function buildHTML(){
     Object.keys(TYPES).map(function(k){return '<button type="button" class="chip'+(S.tipo===k?' on':'')+'" data-tipo="'+k+'">'+esc(TYPES[k])+'</button>'}).join('')+'</div></div>'+
     '<div class="fl">¿Qué quieres conseguir primero?<div class="chips" id="goals">'+
     Object.keys(GOALS).map(function(k){return '<button type="button" class="chip'+(S.goal===k?' on':'')+'" data-goal="'+k+'">'+esc(GOALS[k])+'</button>'}).join('')+'</div></div></div></section>'+
-    '<section class="sec glass" style="gap:12px"><p class="cnt" id="cnt"></p><button class="btn" id="to-sum" type="button">Ver mi propuesta</button></section>'+
     '</div>';
   return h;
 }
@@ -356,6 +366,24 @@ function sumHTML(){
     '<button class="again" type="button" id="edit">Cambiar mi selección</button></section>';
   h+='</div>';
   return h;
+}
+function loadHTML(){
+  return '<section class="card glass"><div><p class="eyebrow">Un momento</p><h2>Estoy armando tu propuesta</h2></div>'+
+    '<ul class="steps" id="lsteps"><li><span class="dot">✓</span>Analizando lo que has elegido</li>'+
+    '<li><span class="dot">✓</span>Buscando el pack más ajustado</li>'+
+    '<li><span class="dot">✓</span>Preparando tu propuesta a medida</li></ul></section>';
+}
+var loadTok=0;
+function runLoad(){
+  var tok=++loadTok;
+  go('load');
+  [450,1100,1750].forEach(function(ms,i){
+    setTimeout(function(){
+      if(tok!==loadTok||view!=='load')return;
+      var li=document.querySelectorAll('#lsteps li')[i];if(li)li.classList.add('done');
+    },ms);
+  });
+  setTimeout(function(){if(tok===loadTok&&view==='load')go('sum')},2400);
 }
 function sentHTML(){
   return '<section class="card glass"><div><p class="eyebrow">Hecho</p><h2>Gracias, '+esc(S.name.trim())+'</h2></div>'+
@@ -427,9 +455,10 @@ function syncBuild(){
   setOn('[data-calls]','data-calls',S.callsN);
   setOn('[data-tipo]','data-tipo',S.tipo);
   setOn('[data-goal]','data-goal',S.goal);
-  var btn=$('to-sum'),cnt=$('cnt');
+  var btn=$('to-sum'),bp=$('bar-pack'),bs=$('bar-sub');
   if(btn)btn.disabled=!sel.length;
-  if(cnt)cnt.textContent=sel.length?(sel.length+(sel.length===1?' servicio elegido':' servicios elegidos')+' · '+S.videos+' vídeos al mes'):'Elige al menos un servicio para continuar';
+  if(bp)bp.textContent=sel.length?'Pack '+PACKS[reqPack()].n:'Elige un servicio';
+  if(bs)bs.textContent=sel.length?(sel.length+(sel.length===1?' servicio':' servicios')+' · '+S.videos+' vídeos al mes'):'Para ver tu propuesta';
 }
 function setOn(sel,attr,val){
   var nodes=document.querySelectorAll(sel);
@@ -438,9 +467,11 @@ function setOn(sel,attr,val){
 function go(v){view=v;draw();try{window.scrollTo(0,0)}catch(e){}}
 function draw(){
   var st=$('stage');
-  st.innerHTML=view==='build'?buildHTML():view==='sum'?sumHTML():sentHTML();
+  st.innerHTML=view==='build'?buildHTML():view==='load'?loadHTML():view==='sum'?sumHTML():sentHTML();
   $('back').hidden=(view!=='sum');
-  $('prog-i').style.width=(view==='build'?'34%':view==='sum'?'68%':'100%');
+  $('bar').hidden=(view!=='build');
+  document.body.classList.toggle('has-bar',view==='build');
+  $('prog-i').style.width=(view==='build'?'25%':view==='load'?'55%':view==='sum'?'78%':'100%');
   if(view==='build')syncBuild();
   if(view==='sum')syncContact();
 }
@@ -463,7 +494,7 @@ document.addEventListener('click',function(e){
   if(t.hasAttribute('data-calls')){S.callsN=Number(t.getAttribute('data-calls'));syncBuild();return}
   if(t.hasAttribute('data-tipo')){var k=t.getAttribute('data-tipo');S.tipo=S.tipo===k?'':k;syncBuild();return}
   if(t.hasAttribute('data-goal')){var g=t.getAttribute('data-goal');S.goal=S.goal===g?'':g;syncBuild();return}
-  if(t.id==='to-sum'){if(selected().length){track('Config Ver propuesta',{pack:PACKS[reqPack()].n});go('sum')}return}
+  if(t.id==='to-sum'){if(selected().length){track('Config Ver propuesta',{pack:PACKS[reqPack()].n});runLoad()}return}
   if(t.id==='send'){submit();return}
   if(t.id==='edit'||t.id==='back'){go('build');return}
 });
