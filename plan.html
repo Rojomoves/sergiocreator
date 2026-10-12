@@ -160,6 +160,8 @@ input[type=text],input[type=tel]{
 @media (prefers-reduced-motion:reduce){.card{animation:none}.prog i{transition:none}}
 </style>
 <style>[hidden]{display:none!important}img{max-width:100%}</style>
+<script defer data-domain="sergiocreator.com" src="https://plausible.io/js/script.js"></script>
+<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
 </head>
 <body>
 <div class="shell">
@@ -283,6 +285,7 @@ function submitContact(){
   if(!contactOk())return;
   A.ig=igClean(A.ig);
   sendLead();
+  try{window.plausible('Plan Lead',{props:{plan:PACKS[reco()].n,origen:origin()}})}catch(e){}
   go('load');
 }
 
@@ -400,7 +403,7 @@ function resultHTML(){
       '<div class="meter"><b>Tu plan está al 90%</b><div class="prog" aria-hidden="true"><i style="width:90%"></i></div></div>'+
       '<h2>Falta tu presupuesto personalizado</h2>'+
       '<p class="mu">El precio exacto depende de tu caso. Hablamos por WhatsApp, lo repasamos juntos y te lo preparo con lo que me has contado. Te respondo personalmente y, si no encajamos, te lo digo con sinceridad.</p>'+
-      '<a class="btn" href="'+url+'" target="_blank" rel="noopener">Pedir mi presupuesto por WhatsApp</a>'+
+      '<a class="btn" href="'+url+'" target="_blank" rel="noopener" onclick="try{plausible(\'Plan WhatsApp\')}catch(e){}">Pedir mi presupuesto por WhatsApp</a>'+
       '<div class="numline"><span>'+WA_SHOW+'</span><button type="button" data-act="copy">Copiar número</button></div>'+
       (sent?'<p class="note">Si prefieres, también puedo escribirte yo por Instagram a @'+esc(igClean(A.ig))+'.</p>':'')+
       (p<3?'<p class="note">Si quieres ir más lejos, en la conversación vemos también el nivel Escala.</p>':'')+
