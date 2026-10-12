@@ -23,6 +23,16 @@
   status = 200
 
 [[redirects]]
+  from = "/configurador"
+  to = "/configurador.html"
+  status = 200
+
+[[redirects]]
+  from = "/configurador/"
+  to = "/configurador.html"
+  status = 200
+
+[[redirects]]
   from = "/privacidad"
   to = "/privacidad.html"
   status = 200
