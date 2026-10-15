@@ -3,16 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tu Plan de Contenido</title>
+<title>Tu plan de contenido — Sergio</title>
 <link rel="canonical" href="https://sergiocreator.com/plan">
 <meta property="og:url" content="https://sergiocreator.com/plan">
-<meta property="og:image" content="https://sergiocreator.com/assets/og-image.png">
+<meta property="og:image" content="https://sergiocreator.com/assets/og/og-plan.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Test de 1 minuto: qué plan de contenido necesita tu proyecto">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Sergio">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://sergiocreator.com/assets/og-image.png">
+<meta name="twitter:image" content="https://sergiocreator.com/assets/og/og-plan.jpg">
 
 <meta name="description" content="Responde 8 preguntas y recibe un plan de contenido a medida: edición, ganchos, ideas ganadoras, estrategia y acompañamiento 1:1.">
 <meta property="og:title" content="Tu Plan de Contenido — Sergio">
@@ -78,7 +80,8 @@ p{margin:0}
 }
 
 .top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:18px 0}
-.brand{font-weight:800;letter-spacing:-.03em;font-size:1.05rem}
+.brand{font-weight:800;letter-spacing:-.04em;font-size:1.25rem;color:var(--tx);text-decoration:none}
+.brand span{color:var(--ac);font-size:.8em;vertical-align:top;margin-left:2px}
 .back{
   font:inherit;font-weight:700;font-size:.9rem;color:var(--mu);background:none;border:0;cursor:pointer;padding:8px 4px;
 }
@@ -176,7 +179,7 @@ input[type=text],input[type=tel]{
 <body>
 <div class="shell">
   <div class="top">
-    <div class="brand">sergio.creator</div>
+    <a class="brand" href="index.html" aria-label="Sergio, inicio">sergio<span aria-hidden="true">✳</span></a>
     <button class="back" id="back" type="button" hidden>← Atrás</button>
   </div>
   <div class="prog" id="prog" aria-hidden="true"><i id="prog-i"></i></div>

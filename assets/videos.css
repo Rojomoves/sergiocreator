@@ -162,3 +162,20 @@
 }
 /* Native navigation stays usable when JavaScript is unavailable. */
 @media (max-width:700px) { .video-portfolio:not(.video-ready) .main-nav { display: flex; position: static; flex-wrap: wrap; width: 100%; order: 3; gap: 10px; } .video-portfolio:not(.video-ready) .header-inner { height: auto; padding-block: 14px; } }
+/* Carruseles horizontales para las filas de reels (boxeo y productora): menos scroll vertical. */
+.reel-carousel { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: min(340px,78vw); gap: 24px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: #d4efaa40 transparent; padding: 4px 4px 14px; margin-inline: -4px; }
+.reel-carousel>* { scroll-snap-align: start; min-width: 0; }
+.reel-carousel .reel-card { max-width: none; margin: 0; width: 100%; }
+.reel-carousel:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; border-radius: 26px; }
+.carousel-controls { display: flex; justify-content: flex-end; gap: 10px; margin-top: 12px; }
+.carousel-controls[hidden] { display: none; }
+.carousel-controls button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--glass-border); background: var(--glass); color: var(--paper); font-size: 20px; line-height: 1; cursor: pointer; transition: border-color .2s, color .2s, opacity .2s; }
+.carousel-controls button:hover:not(:disabled) { border-color: var(--lime); color: var(--lime); }
+.carousel-controls button:disabled { opacity: .35; cursor: default; }
+.carousel-controls button:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+@media (max-width:700px) { .reel-carousel { grid-template-columns: none; } .carousel-controls { justify-content: center; } }
+/* Botón flotante hacia el configurador de presupuesto. */
+.float-quote { position: fixed; right: 22px; bottom: 22px; z-index: 60; display: inline-flex; align-items: center; gap: 12px; padding: 15px 22px; border-radius: 999px; background: var(--lime); color: var(--ink); font-size: 13px; font-weight: 650; text-decoration: none; box-shadow: 0 12px 34px #0007; transition: background .2s, transform .2s; }
+.float-quote:hover { background: #e3ffa2; transform: translateY(-2px); }
+.float-quote:focus-visible { outline: 2px solid var(--paper); outline-offset: 3px; }
+@media (max-width:700px) { .float-quote { right: 14px; bottom: 14px; padding: 13px 18px; font-size: 12px; } }

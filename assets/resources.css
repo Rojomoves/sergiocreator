@@ -58,3 +58,5 @@ h1{font-size:clamp(40px,5.4vw,65px);font-weight:600;color:var(--text-main);lette
 @media(max-width:768px){.resource-header{grid-template-columns:1fr;gap:28px}.top-nav{margin-bottom:32px}.resource-nav-links{gap:12px}.resource-wordmark{font-size:26px}.top-nav .back-link{font-size:10px}.top-nav .button-lime{font-size:11px;padding:10px 12px}.resource-flow{grid-template-columns:1fr}.resource-flow>div{padding:22px}.cta-banner{padding:28px 24px}.related-links{grid-template-columns:1fr}.resource-container{padding:18px}.resource-label{font-size:10px}.rule-item{grid-template-columns:24px 1fr;gap:12px;padding:20px}.header-desc{font-size:15px}}
 @media(max-width:380px){body{padding-inline:16px}.top-nav .back-link{max-width:90px}.resource-nav-links{gap:10px}h1{font-size:38px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+/* Con 5 o más tarjetas, tres columnas: evita filas de 4 con tarjetas descolgadas debajo. */
+@media (min-width:900px){.cards-grid:has(> :nth-child(5)){grid-template-columns:repeat(3,minmax(0,1fr))}}

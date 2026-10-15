@@ -58,6 +58,28 @@
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) videos.forEach(video => video.pause());
   });
+  // Carruseles de reels: flechas que avanzan una tarjeta y se desactivan al llegar a los extremos.
+  document.querySelectorAll('.reel-carousel').forEach(carousel => {
+    const controls = document.createElement('div');
+    controls.className = 'carousel-controls';
+    controls.innerHTML = '<button type="button" data-dir="-1" aria-label="Ver proyectos anteriores">←</button><button type="button" data-dir="1" aria-label="Ver proyectos siguientes">→</button>';
+    carousel.after(controls);
+    const [prev, next] = controls.querySelectorAll('button');
+    const step = () => carousel.firstElementChild.getBoundingClientRect().width + parseFloat(getComputedStyle(carousel).columnGap);
+    const update = () => {
+      const max = carousel.scrollWidth - carousel.clientWidth - 2;
+      prev.disabled = carousel.scrollLeft <= 2;
+      next.disabled = carousel.scrollLeft >= max;
+      controls.hidden = carousel.scrollWidth <= carousel.clientWidth + 2;
+    };
+    controls.addEventListener('click', event => {
+      const button = event.target.closest('button');
+      if (button) carousel.scrollBy({ left: Number(button.dataset.dir) * step(), behavior: 'smooth' });
+    });
+    carousel.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  });
   const year = document.querySelector('#year');
   if (year) year.textContent = String(new Date().getFullYear());
 })();

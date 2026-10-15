@@ -278,6 +278,12 @@ h2{font-size:clamp(38px,4.15vw,60px);letter-spacing:-2.5px;line-height:1.12}
 .testimonial-play small{display:block;font-size:9px;color:#d5d8cf;margin-top:4px}
 .testimonial-credit{font-size:12px;padding:13px 2px 0;color:var(--paper)}
 .testimonial-credit span{color:var(--muted);font-size:10px}
+.testimonial-row{margin-block:72px 88px;display:grid;gap:28px;justify-items:center}
+.testimonial-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),300px));justify-content:center;gap:32px;width:100%}
+.testimonial-card{margin:0;display:grid;gap:14px;min-width:0;align-content:start}
+.testimonial-card .testimonial-trigger{width:100%;color:var(--paper);box-shadow:0 20px 40px #1b302020}
+.testimonial-card .testimonial-credit{color:var(--ink);padding:0;font-size:13px}
+.testimonial-card .testimonial-credit span{color:#5b6358}
 .case-details{margin-top:36px;border-top:1px solid var(--line)}
 .case-details summary{padding:22px 0 0;cursor:pointer;font-size:13px;list-style:none;display:flex;gap:18px;align-items:center}
 .case-details summary::after{content:'+';font-size:23px;color:var(--lime);margin-left:auto}
@@ -347,3 +353,7 @@ summary::-webkit-details-marker{display:none}
   .systems-closing p{font-size:18px}
   .systems-closing .text-link{margin-top:22px}
 }
+/* Pie del retrato arriba para que la nota "8+" no lo tape; iconos de servicio a la misma altura para alinear títulos. */
+.hero-visual .portrait-caption{top:22px;bottom:auto}
+.hero-visual .portrait-caption>span:last-child{display:none}
+.service-top{min-height:36px}

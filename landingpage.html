@@ -199,15 +199,17 @@ h2 {
 .proof-label { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; margin-top: 4px; }
 .proof-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
 .proof-img-wrap {
+  aspect-ratio: 4/5;
   border-radius: var(--r); overflow: hidden;
   border: 1px solid var(--border); position: relative;
   cursor: zoom-in; background: var(--surface2);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .proof-img-wrap:hover { border-color: rgba(213,245,120,0.4); box-shadow: 0 0 0 1px rgba(213,245,120,0.15); }
-/* imagen completa: no recortamos, se adapta a su alto natural */
+/* miniaturas del mismo formato, recortadas desde arriba; la imagen completa se ve al ampliar */
 .proof-img-wrap img {
-  width: 100%; height: auto;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
   display: block;
   transition: transform 0.3s;
 }
@@ -679,7 +681,7 @@ footer a:hover { color: var(--fg); }
 <div class="lightbox-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
   <div class="lightbox-inner">
     <button class="lb-close" id="lbClose" aria-label="Cerrar imagen">×</button>
-    <img id="lbImg" src="" alt="">
+    <img id="lbImg" alt="">
     <p class="lb-caption" id="lbCaption"></p>
   </div>
 </div>
@@ -704,7 +706,7 @@ function openLightbox(src, caption, trigger) {
 function closeLightbox() {
   overlay.classList.remove('open');
   document.body.style.overflow = '';
-  lbImg.src = '';
+  lbImg.removeAttribute('src');
   lastFocus?.focus({ preventScroll: true });
 }
 

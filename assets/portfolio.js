@@ -202,6 +202,8 @@
     video.addEventListener('volumechange', updateSoundButton);
     video.addEventListener('playing', () => { playbackNote.hidden = true; });
     let trigger;
+    const modalTitle = videoModal.querySelector('#video-modal-title');
+    const openOriginal = videoModal.querySelector('.video-modal-bottom a[target]');
     document.querySelectorAll('[data-video-trigger]').forEach(link => {
       link.setAttribute('aria-haspopup', 'dialog');
       link.setAttribute('aria-controls', videoModal.id);
@@ -209,9 +211,18 @@
         if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
         event.preventDefault();
         trigger = link;
+        // Each trigger can point to a different testimonial, so load its own film, poster and title.
+        const src = link.dataset.src || video.dataset.src;
+        if (video.getAttribute('src') !== src) video.src = src;
+        video.poster = link.dataset.poster || video.dataset.poster;
+        openOriginal.href = src;
+        if (link.dataset.title) {
+          originals.get(modalTitle).text = link.dataset.title;
+          modalTitle.dataset.en = link.dataset.titleEn || link.dataset.title;
+          modalTitle.textContent = language === 'en' ? modalTitle.dataset.en : link.dataset.title;
+        }
         videoModal.showModal();
         document.body.classList.add('modal-open');
-        if (!video.getAttribute('src')) video.src = video.dataset.src;
         playWithSound();
       });
     });
