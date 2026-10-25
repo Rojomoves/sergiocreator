@@ -26,8 +26,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;550;600;650;700&family=Manrope:wght@400;500;600;650;700;750;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/portfolio.css?v=20261015">
   <link rel="stylesheet" href="assets/premium.css?v=20261002">
-  <link rel="stylesheet" href="assets/videos.css?v=20261015">
-  <script src="assets/videos.js?v=20261015" defer></script>
+  <link rel="stylesheet" href="assets/videos.css?v=20261024b">
+  <script src="assets/videos.js?v=20261024" defer></script>
 </head>
 <body class="video-portfolio">
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -69,7 +69,7 @@
 
     <section class="edit-work container" id="trabajos" aria-labelledby="work-title">
       <div class="section-heading"><div><p class="eyebrow">01 / PORTFOLIO SELECCIONADO</p><h2 id="work-title">Dale al play.<br><span class="accent">La edición habla.</span></h2></div><p class="section-intro">Distintas marcas, distintos ritmos. Explora los proyectos y encuentra el estilo que encaja con tu contenido.</p></div>
-      <nav class="format-nav" aria-label="Explorar por formato"><a href="#videos-largos">YouTube <span>02</span></a><a href="#videos-cortos">Reels & Shorts <span>10</span></a><a href="#testimonios">Testimonios <span>02</span></a><a href="#contacto">Tu próximo vídeo <span aria-hidden="true">↗</span></a></nav>
+      <nav class="format-nav" aria-label="Explorar por formato"><a href="#videos-largos">YouTube <span>02</span></a><a href="#videos-cortos">Reels & Shorts <span>10</span></a><a href="#antes-despues">Antes / Después <span>02</span></a><a href="#testimonios">Testimonios <span>02</span></a><a href="#contacto">Tu próximo vídeo <span aria-hidden="true">↗</span></a></nav>
 
       <div class="work-group" id="videos-largos">
         <div class="work-group-heading"><div><p class="eyebrow">FORMATO LARGO</p><h3>Una historia que merece quedarse.</h3></div><p>Estructura, ritmo y claridad para YouTube.</p></div>
@@ -115,9 +115,55 @@
         </div>
       </div>
 
+      <div class="work-group" id="antes-despues">
+        <div class="work-group-heading"><div><p class="eyebrow">ANTES VS DESPUÉS</p><h3>El mismo material. Otra historia.</h3></div><p>Desliza y compara el vídeo en bruto con la edición final.</p></div>
+        <div class="ba-carousel" role="region" aria-roledescription="carrusel" aria-label="Comparaciones antes y después" tabindex="0">
+        <div class="ba-layout" role="group" aria-roledescription="comparación" aria-label="1 de 2: Real estate" data-label="Real estate">
+          <figure class="ba-card">
+            <div class="ba-stage" data-ba style="--ba-pos:50%">
+              <div class="ba-pane ba-before"><video controls playsinline preload="none" poster="assets/real-estate-antes-poster.jpg" aria-label="Real estate, vídeo en bruto sin editar"><source src="assets/videos-cortos/real-estate-antes.mp4" type="video/mp4"></video><span class="ba-tag">Antes</span></div>
+              <div class="ba-pane ba-after"><video controls playsinline preload="none" poster="assets/real-estate-despues-poster.jpg" aria-label="Real estate, vídeo editado"><source src="assets/videos-cortos/real-estate-despues.mp4" type="video/mp4"></video><span class="ba-tag">Después</span></div>
+            </div>
+            <figcaption><span>Real estate · Tour de obra</span><small>Material en bruto / Edición final</small><a class="video-fallback" href="assets/videos-cortos/real-estate-despues.mp4">Abrir edición ↗</a></figcaption>
+          </figure>
+          <div class="ba-copy">
+            <p class="film-label">REEL / INMOBILIARIA</p>
+            <h4>De grabación de obra a recorrido que vende.</h4>
+            <p>La misma toma, sin regrabar nada. La edición convierte un paseo por espacios vacíos en una visita que se entiende, se imagina y se ve hasta el final.</p>
+            <ol class="ba-changes">
+              <li><span>01</span><div><strong>Subtítulos que guían</strong><small>El mensaje llega también sin sonido.</small></div></li>
+              <li><span>02</span><div><strong>Espacios amueblados</strong><small>Cada estancia se muestra como podría quedar.</small></div></li>
+              <li><span>03</span><div><strong>Reencuadres y zoom</strong><small>El plano acompaña cada gesto y cada detalle.</small></div></li>
+              <li><span>04</span><div><strong>Ritmo y acabado</strong><small>Cortes limpios y un cierre listo para publicar.</small></div></li>
+            </ol>
+          </div>
+        </div>
+        <div class="ba-layout" role="group" aria-roledescription="comparación" aria-label="2 de 2: Astrum" data-label="Astrum">
+          <figure class="ba-card">
+            <div class="ba-stage" data-ba style="--ba-pos:50%">
+              <div class="ba-pane ba-before"><video controls playsinline preload="none" poster="assets/astrum-antes-poster.jpg" aria-label="Astrum, vídeo en bruto sin editar"><source src="assets/videos-cortos/astrum-antes.mp4" type="video/mp4"></video><span class="ba-tag">Antes</span></div>
+              <div class="ba-pane ba-after"><video controls playsinline preload="none" poster="assets/astrum-despues-poster.jpg" aria-label="Astrum, vídeo editado"><source src="assets/videos-cortos/astrum-despues.mp4" type="video/mp4"></video><span class="ba-tag">Después</span></div>
+            </div>
+            <figcaption><span>Astrum · Productora musical</span><small>Material en bruto / Edición final</small><a class="video-fallback" href="assets/videos-cortos/astrum-despues.mp4">Abrir edición ↗</a></figcaption>
+          </figure>
+          <div class="ba-copy">
+            <p class="film-label">REEL / PRODUCTORA MUSICAL</p>
+            <h4>De un mensaje a cámara a una pieza que se sigue.</h4>
+            <p>Mismo plano, mismas palabras. La edición pone en pantalla lo que se cuenta para que el mensaje del estudio se entienda y se recuerde.</p>
+            <ol class="ba-changes">
+              <li><span>01</span><div><strong>Subtítulos palabra a palabra</strong><small>Cada frase se lee al ritmo de la voz.</small></div></li>
+              <li><span>02</span><div><strong>Inserciones que ilustran</strong><small>Lo que se menciona, aparece en pantalla.</small></div></li>
+              <li><span>03</span><div><strong>Atención sostenida</strong><small>Siempre hay algo nuevo que mirar.</small></div></li>
+              <li><span>04</span><div><strong>Listo para publicar</strong><small>Formato y acabado pensados para Reels.</small></div></li>
+            </ol>
+          </div>
+        </div>
+        </div>
+      </div>
+
       <div class="work-group" id="testimonios">
         <div class="work-group-heading"><div><p class="eyebrow">FORMATO TESTIMONIO</p><h3>En sus propias palabras.</h3></div><p>Clientes que cuentan su experiencia trabajando conmigo.</p></div>
-        <div class="reel-grid">
+        <div class="reel-grid reel-carousel" role="region" aria-label="Testimonios de clientes">
           <figure class="reel-card"><video controls playsinline preload="none" poster="assets/testimonio-marc-poster.jpg" aria-label="Testimonio de Marc sobre el servicio para podcast"><source src="assets/testimonio-marc-web.mp4" type="video/mp4"></video><figcaption><span>Marc</span><small>01 / Testimonio</small><a class="video-fallback" href="assets/testimonio-marc-web.mp4">Abrir vídeo ↗</a></figcaption></figure>
           <figure class="reel-card"><video controls playsinline preload="none" poster="assets/testimonio-boxeo-poster.jpg" aria-label="Testimonio del Club de Boxeo Vinarós"><source src="assets/testimonio-boxeo-web.mp4" type="video/mp4"></video><figcaption><span>Club Boxeo Vinarós</span><small>02 / Testimonio</small><a class="video-fallback" href="assets/testimonio-boxeo-web.mp4">Abrir vídeo ↗</a></figcaption></figure>
         </div>
